@@ -1,6 +1,6 @@
 /* header and nav layout */
 header .nav-wrapper {
-	background-color: var(--background-color);
+	/* background-color: var(--background-color); */
 	width: 100%;
 	z-index: 2;
 	position: fixed;
@@ -8,35 +8,33 @@ header .nav-wrapper {
   
   header nav#nav {
 	box-sizing: border-box;
-	display: grid;
-	grid-template:
-	  "hamburger brand tools" var(--nav-height)
-	  "sections sections sections" 1fr / auto 1fr auto;
+	display: flex;
+	flex-direction: column;
 	align-items: center;
-	gap: 0 2em;
 	margin: auto;
 	max-width: 1264px;
 	height: var(--nav-height);
 	padding: 0 1rem;
 	font-family: var(--body-font-family);
+	border: solid 2px lime;
   }
   
   header nav#nav[aria-expanded="true"] {
-	grid-template:
+	/* grid-template:
 	  "hamburger brand" var(--nav-height)
 	  "sections sections" 1fr
-	  "tools tools" var(--nav-height) / auto 1fr;
+	  "tools tools" var(--nav-height) / auto 1fr; */
 	overflow-y: auto;
 	min-height: 100vh;
   }
   
-  @media (width >= 600px) {
+  /* @media (width >= 600px) {
 	header nav#nav {
 	  padding: 0 2rem;
 	}
-  }
+  } */
   
-  @media (width >= 900px) {
+  /* @media (width >= 900px) {
 	header nav#nav {
 	  display: flex;
 	  justify-content: space-between;
@@ -46,7 +44,7 @@ header .nav-wrapper {
 	  min-height: 0;
 	  overflow: visible;
 	}
-  }
+  } */
   
   header nav#nav p {
 	margin: 0;
@@ -132,12 +130,12 @@ header .nav-wrapper {
 	transform: rotate(-45deg);
   }
   
-  @media (width >= 900px) {
+  /* @media (width >= 900px) {
 	header nav#nav .nav-hamburger {
 	  display: none;
 	  visibility: hidden;
 	}
-  }
+  } */
   
   /* brand */
   header .nav-brand {
@@ -155,8 +153,6 @@ header .nav-wrapper {
   
   /* sections */
   header nav#nav .nav-sections {
-	grid-area: sections;
-	flex: 1 1 auto;
 	display: none;
 	visibility: hidden;
   }
@@ -164,7 +160,6 @@ header .nav-wrapper {
   header nav#nav[aria-expanded="true"] .nav-sections {
 	display: block;
 	visibility: visible;
-	align-self: start;
   }
   
   header nav#nav .nav-sections ul {
@@ -186,7 +181,7 @@ header .nav-wrapper {
 	font-weight: 500;
   }
   
-  @media (width >= 900px) {
+  /* @media (width >= 900px) { */
 	header nav#nav .nav-sections {
 	  display: block;
 	  visibility: visible;
@@ -272,13 +267,9 @@ header .nav-wrapper {
 	header nav#nav .nav-sections .default-content-wrapper > ul > li > ul > li {
 	  padding: 8px 0;
 	}
-  }
+  /* } */
   
   /* tools */
-  header nav#nav .nav-tools {
-	grid-area: tools;
-  }
-  
   header nav#nav .nav-tools .button {
 	background: none;
 	border: none;
@@ -286,6 +277,7 @@ header .nav-wrapper {
 	margin: 0;
   }
   
+
   /* breadcrumbs */
   header .breadcrumbs {
 	display: none;

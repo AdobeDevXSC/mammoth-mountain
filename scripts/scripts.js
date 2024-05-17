@@ -31,7 +31,10 @@ import {
   };
 
 const LCP_BLOCKS = [
-	'hero'
+	'hero',
+	'cta-grid',
+	'fullwidth-image',
+	'mega-menu'
 ]; // add your LCP blocks to the list
 
 const AUDIENCES = {
