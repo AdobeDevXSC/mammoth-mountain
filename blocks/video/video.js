@@ -112,7 +112,7 @@ function embedYoutube(url, replacePlaceholder, autoplay) {
 	  wrapper.innerHTML = '<div class="video-placeholder-play"><button type="button" title="Play"></button></div>';
 	  wrapper.prepend(placeholder);
 	  wrapper.addEventListener('click', () => {
-		loadVideoEmbed(block, link, true, false);
+		loadVideoEmbed(block, link, true, block.classList.contains('autoplay'));
 	  });
 	  block.append(wrapper);
 	} else {
@@ -126,4 +126,4 @@ function embedYoutube(url, replacePlaceholder, autoplay) {
 	  });
 	  observer.observe(block);
 	}
-  }
+}

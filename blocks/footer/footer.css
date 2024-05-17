@@ -13,3 +13,44 @@ footer .footer {
 footer .footer p {
   margin: 0;
 }
+
+footer > div .footer-columns {
+	display: grid;
+	/* grid-template-areas: ; */
+	border: solid 1px purple;
+}
+
+
+footer > div .footer-columns > div:first-of-type {
+	border: solid 1px orange;
+}
+
+footer > div .footer-columns > div:first-of-type p:last-of-type {
+
+}
+
+footer > div .footer-columns > div:first-of-type p:last-of-type::after {
+	display: block;
+	content: 'sign-up';
+	width: fit-content;
+	text-transform: uppercase;
+	background-color: var(--link-color);
+}
+
+footer > div .footer-columns > div:first-of-type p:last-of-type:hover::after {
+	cursor: pointer;
+	background-color: var(--link-hover-color);
+}
+
+
+footer > div .footer-columns > div:nth-of-type(2) {
+	border: solid 1px lime;
+}
+
+footer > div .footer-columns > div:nth-of-type(3) {
+	border: solid 1px blue;
+}
+
+footer > div .footer-columns > div:nth-of-type(4) {
+	border: solid 1px fuchsia;
+}
