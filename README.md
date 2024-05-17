@@ -2,8 +2,8 @@
 
 
 ## Environments
-- Preview: https://main--door-opener-boilerplate--adobedevxsc.hlx.page/
-- Live: https://main--door-opener-boilerplate--adobedevxsc.hlx.live/
+- Preview: https://main--mammoth-mountain--adobedevxsc.hlx.page/
+- Live: https://main--mammoth-mountain--adobedevxsc.hlx.live/
 
 ## Installation
 
