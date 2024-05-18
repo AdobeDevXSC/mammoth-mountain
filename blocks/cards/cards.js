@@ -1,9 +1,9 @@
 import { createOptimizedPicture } from '../../scripts/aem.js';
 
 export default async function decorate(block) {
-  const isIconCards = block.classList.contains('icon');
-//   const isArticleCards = block.classList.contains('articles');
+  const isIcon = block.classList.contains('icon');
 
+// un-comment this when adding spreadsheet source
 //   async function fetchJson(link) {
 //     const response = await fetch(link?.href);
 
@@ -16,8 +16,6 @@ export default async function decorate(block) {
 //   }
 
   const ul = document.createElement('ul');
-
-  if (isIconCards) {
     [...block.children].forEach((row) => {
       const anchor = document.createElement('a');
       anchor.href = '';
@@ -36,38 +34,13 @@ export default async function decorate(block) {
           div.className = 'cards-card-body';
         }
       });
-      anchor.append(li);
-      ul.append(anchor);
+	  if (isIcon) {
+		anchor.append(li);
+		ul.append(anchor);
+	  } else {
+		ul.append(li);
+	  }
     });
-  }
-
-//   if (isArticleCards) {
-//     const link = block.querySelector('a');
-//     const cardData = await fetchJson(link);
-//     cardData.forEach((item) => {
-//       const picture = createOptimizedPicture(item.image, item.title, false, [{ width: 320 }]);
-//       picture.lastElementChild.width = '320';
-//       picture.lastElementChild.height = '180';
-//       const createdCard = document.createElement('li');
-//       createdCard.innerHTML = `
-//         <div class="cards-card-image">
-//           <div data-align="center">${picture.outerHTML}</div>
-//         </div>
-//         <div class="cards-card-body">
-//           <h5>${item.title}</h5>
-//           <p class="button-container">
-//             <a href="${item.url}" aria-label="${item['anchor-text']}" title="${item['anchor-text']}" class="button">
-//               Read more 
-//               <span class="card-arrow">
-//                 <img class="icon" src="/icons/chevron.svg" />
-//               </span>
-//             </a>
-//           </p>
-//         </div>
-//       `;
-//       ul.append(createdCard);
-//     });
-//   }
 
   block.textContent = '';
   block.append(ul);

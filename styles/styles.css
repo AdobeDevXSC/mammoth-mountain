@@ -200,6 +200,15 @@ main .section.fullwidth-image-container {
 	width: 100%;
 }
 
+main .section.cards-container {	
+	padding: 0;
+}
+
+main .section.cards-container .cards-wrapper {
+	margin: 0;
+	max-width: 100%;
+}
+
 @media (width >= 600px) {
   main .section {
     padding: 64px 32px;
@@ -210,6 +219,10 @@ main .section.fullwidth-image-container {
 	padding: 0;
 	margin: 48px auto;
 	width: calc(100% - 40px);
+  }
+
+  main .section.cards-container {	
+	padding: 0;
   }
 }
 

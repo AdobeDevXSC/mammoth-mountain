@@ -140,3 +140,101 @@
 	color: var(--light-color);
 	text-underline-position: under;
   }
+
+
+
+  /* editorial cards styles */
+  .cards.dark {
+	background-color: var(--dark-color);
+	border: solid 1px lime;
+	width: 100%;
+  }
+
+  .cards.editorial {
+	position: relative;
+    padding: 67px 0 165px;
+    overflow: hidden;
+  }
+
+  .cards.editorial ul {
+    position: relative;
+    aspect-ratio: 2.185;
+    width: 100%;
+  }
+
+  .cards.editorial ul::after {
+	content: '';
+	width: 202px;
+	height: 202px;
+	background: url(../../icons/orangefunsticker.png);
+	background-repeat: no-repeat;
+	display: inline-block;
+	position: absolute;
+    right: 71px;
+    top: 21px;
+  }
+
+  .cards.cards.editorial ul li {
+	display: block;
+	translate: none;
+    rotate: none;
+    scale: none;
+    transform: translate(0%, -50%) translate(0px, -0.211px);
+    opacity: 1;
+    top: 50%;
+	z-index: 1;
+	border: none;
+  }
+
+  .cards.editorial ul li:nth-of-type(2)::before {
+	content: '';
+	width: 101px;
+	height: 101px;
+	background-color: var(--dark-color);
+	display: inline-block;
+	position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  .cards.editorial ul li:nth-of-type(2)::after {
+	content: '';
+	width: 61px;
+	height: 61px;
+	display: inline-block;
+	position: absolute;
+    left: 15px;
+    top: 15px;
+	background: url(../../icons/whitemammothlogo.png);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
+  }
+
+  @media ((width >= 768px) ) {
+	.cards.cards.editorial ul li {
+		position: absolute;
+		width: 25%;
+		height: unset;
+  	}
+  }
+
+
+  @media (width >= 1020px) {
+	.cards.editorial ul li:first-of-type {
+		left: 7.64%;
+	}
+
+	.cards.editorial ul li:nth-of-type(2) {
+		left: 38.19%;
+	}
+
+	.cards.editorial ul li:last-of-type {
+		left: 68.74%;
+	}
+}
+
+
+
+
+  /* calendar cards styles */
