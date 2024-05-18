@@ -84,7 +84,7 @@ footer > div .footer-columns > div:first-of-type div:first-of-type p:last-of-typ
 	text-transform: uppercase;
 	background-color: var(--link-color);
 	color: var(--light-color);
-	padding:  0 32px;
+	padding: 0 32px;
 	letter-spacing: 1px;
     font-size: 1.125rem;
     line-height: 1rem;

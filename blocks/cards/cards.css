@@ -238,3 +238,120 @@
 
 
   /* calendar cards styles */
+  	/* position & styles of all events button (parent container) */
+	.cards-container .default-content-wrapper {
+		display: grid;
+		grid-template-columns: repeat(8, 1fr);
+	}
+
+	.cards-container .default-content-wrapper p {
+		margin: 0;
+		grid-column: 5/ span 4;
+		display: flex;
+		align-items: center;
+	}
+
+	.cards-container .default-content-wrapper p a {
+		width: fit-content;
+		text-transform: uppercase;
+		background-color: var(--link-color);
+		color: var(--light-color);
+		padding:  0 32px;
+		letter-spacing: 1px;
+		font-size: 1.125rem;
+		line-height: 48px;
+		min-height: 48px;
+		border-radius: 0;
+		margin: 0;
+		transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+	}
+
+	.cards-container .default-content-wrapper p a:hover {
+		background-color: var(--link-hover-color);
+		text-decoration: none;
+	}
+
+	.cards.calendar {
+		display: grid;
+		grid-template-columns: repeat(8, 1fr);
+		position: relative;
+	}
+
+	/* blue mammoth logo */
+	.cards.calendar::before {
+		content: '';
+		width: 536px;
+		height: 480px;
+		display: inline-block;
+		position: absolute;
+		left: -5px;
+		top: 15px;
+		background: url(../../icons/crownblue.png);
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: contain;
+	}
+
+
+	.cards.calendar ul {
+		grid-column: 5/ span 4;
+	}
+
+  .cards.calendar > ul > li {
+	border: none;
+  }
+
+  .cards.calendar .cards-card-body {
+	margin-left: 0;
+  }
+
+  .cards.calendar .cards-card-body span {
+	display: inline-block;
+	background-color: var(--dark-color);
+	padding: 3px 14px 9px;
+  }
+
+  .cards.calendar .cards-card-body span p {
+	color: var(--light-color);
+    font-size: 1.625rem;
+    line-height: 2.4375rem;
+	width: fit-content;
+	margin: 0;
+  }
+
+  .cards.calendar .cards-card-body h5 {
+	text-transform: capitalize;
+	color: var(--dark-color);
+	font-size: 1.875rem;
+	line-height: 1.875rem;
+	letter-spacing: normal;
+	margin: 32px 0 0 0;
+  }
+
+  .cards.calendar .cards-card-body h5 span {
+	background-color: transparent;
+	position: relative;
+	display: inline-block;
+  }
+
+  .cards.calendar .cards-card-body h5 span img {
+	width: 16px;
+	height: 27px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -55%);
+  }
+
+  .cards.calendar a:hover {
+	text-decoration: none;
+  }
+
+  .cards.calendar a:hover .cards-card-body h5 {
+	color: var(--mammoth-blue);
+  }
+
+
+  .cards.calendar a:hover .cards-card-body h5 span img {
+  	filter: invert(25%) sepia(97%) saturate(1842%) hue-rotate(182deg) brightness(93%) contrast(103%);
+  }

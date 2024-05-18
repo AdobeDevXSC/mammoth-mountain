@@ -19,9 +19,7 @@ export default async function decorate(block) {
 
   if(isCalendar) {
 	const link = block.querySelector('a');
-	console.log('link', link)
 	const cardData = await fetchJson(link);
-	console.log('card data', cardData)
 	
 	cardData.forEach((event) => {
 		console.log('event', event)
@@ -32,14 +30,17 @@ export default async function decorate(block) {
 				<span>
 					<p>${event.dates}</p>
 				</span>
-				<h5>${event.title}</h5>
+				<h5>${event.title}
+					<span class="card-arrow">
+                		<img class="icon" src="/icons/chevron-right.svg" />
+              		</span>
+				</h5>
 			</div>
 		</a>
 		`;
 		ul.append(createdCard);
 	});
   } else {
-
     [...block.children].forEach((row) => {
       const anchor = document.createElement('a');
       anchor.href = '';
