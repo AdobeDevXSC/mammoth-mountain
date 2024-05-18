@@ -16,6 +16,30 @@ export default async function decorate(block) {
   }
 
   const ul = document.createElement('ul');
+
+  if(isCalendar) {
+	const link = block.querySelector('a');
+	console.log('link', link)
+	const cardData = await fetchJson(link);
+	console.log('card data', cardData)
+	
+	cardData.forEach((event) => {
+		console.log('event', event)
+		const createdCard = document.createElement('li');
+		createdCard.innerHTML = `
+		<a href="${event.url}" aria-label="${event['anchor-text']}"}">
+			<div class="cards-card-body">
+				<span>
+					<p>${event.dates}</p>
+				</span>
+				<h5>${event.title}</h5>
+			</div>
+		</a>
+		`;
+		ul.append(createdCard);
+	});
+  } else {
+
     [...block.children].forEach((row) => {
       const anchor = document.createElement('a');
       anchor.href = '';
@@ -41,31 +65,8 @@ export default async function decorate(block) {
 	  } else {
 		ul.append(li);
 	  }
-    });
-
-	console.log('iscalendar', isCalendar)
-  if(isCalendar) {
-	const link = block.querySelector('a');
-	console.log('link', link)
-	const cardData = await fetchJson(link);
-	console.log('card data', cardData)
-	
-	cardData.forEach((event) => {
-		console.log('event', event)
-		const createdCard = document.createElement('li');
-		createdCard.innerHTML = `
-		<a href="${event.url}" aria-label="${event['anchor-text']}"}">
-			<div class="cards-card-body">
-				<span>
-					<p>${event.dates}</p>
-				</span>
-				<h5>${event.title}</h5>
-			</div>
-		</a>
-		`;
-		ul.append(createdCard);
-	});
-  }
+    })
+};
 
   block.textContent = '';
   block.append(ul);
