@@ -12,17 +12,17 @@
 
 :root {
   /* colors */
-  --link-color: #0072B2;
+  --mammoth-blue: #0072B2;
+  --link-color: var(--mammoth-blue);
   --link-hover-color: #00578E;
-  --background-color: white;
-  --light-color: #eee;
-  --dark-color: #ccc;
-  --text-color: black;
+  --light-color: #fff;
+  --dark-color: #000;
+  /* --text-color: black; */
 
   /* fonts */
-  --body-font-family: gothic-a1;
-  --heading-font-family: lubalin;
-  --fixed-font-family: 'Roboto Mono', menlo, consolas, 'Liberation Mono', monospace;
+  --body-font-family: trade-gothic-next, sans-serif;
+  --heading-font-family: itc-lubalin;
+  /* --fixed-font-family: 'Roboto Mono', menlo, consolas, 'Liberation Mono', monospace; */
 
   /* body sizes */
   --body-font-size-m: 22px;
@@ -39,6 +39,10 @@
 
   /* nav height */
   --nav-height: 64px;
+
+  /* responsive */
+  --desktop: 1020px;
+  --mobile: 768px;
 }
 
 @font-face {

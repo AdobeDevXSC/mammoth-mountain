@@ -93,7 +93,7 @@
 	margin: 16px 0 0 0;
 	min-width: 5rem;
 	width: 100%;
-	color: var(--text-color);
+	color: var(--dark-color);
   }
   
   .cards.icon > ul > a > li > .cards-card-body > p {

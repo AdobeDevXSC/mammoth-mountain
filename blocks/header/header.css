@@ -4,6 +4,7 @@ header .nav-wrapper {
 	width: 100%;
 	z-index: 2;
 	position: fixed;
+	display: none;
   }
   
   header nav#nav {
@@ -313,7 +314,7 @@ header .nav-wrapper {
   
   /* stylelint-disable-next-line no-descending-specificity */
   header .breadcrumbs ol li a:any-link {
-	color: var(--text-color);
+	color: var(--dark-color);
   }
   
   /* stylelint-disable-next-line no-descending-specificity */
