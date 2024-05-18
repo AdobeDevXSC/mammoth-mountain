@@ -194,9 +194,22 @@ main .section {
   padding: 64px 16px;
 }
 
+main .section.fullwidth-image-container {	
+	padding: 0;
+	margin: 40px auto;
+	width: 100%;
+}
+
 @media (width >= 600px) {
   main .section {
     padding: 64px 32px;
+  }
+
+  /* custom block section padding */
+  main .section.fullwidth-image-container {	
+	padding: 0;
+	margin: 48px auto;
+	width: calc(100% - 40px);
   }
 }
 
@@ -206,6 +219,7 @@ main .section {
     margin: auto;
   }
 }
+
 
 /* section metadata */
 main .section.light,
@@ -220,6 +234,6 @@ main .section.highlight {
 	line-height: normal;
   }
   
-  .hlx-preview-overlay .hlx-badge .hlx-popup * {
-	font-size: 14px;
-  }
+.hlx-preview-overlay .hlx-badge .hlx-popup * {
+font-size: 14px;
+}
