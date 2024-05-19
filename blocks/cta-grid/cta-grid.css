@@ -1,0 +1,93 @@
+main .section.cta-grid-container::before {
+	content: '';
+	width: 100vw;
+	height: 542px;
+	display: block;
+	position: absolute;
+	left: 0;
+	top: 0;
+	background-color: var(--dark-color);
+	z-index: 1;
+}
+
+.cta-grid::before {
+	content: '';
+	width: 140px;
+	height: 140px;
+	display: inline-block;
+	position: absolute;
+	left: 20px;
+	top: -235px;
+	background: url(../../icons/whitemammothlogo.png);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
+	z-index: 1;
+}
+
+.cta-grid {
+	position: relative;
+	bottom: -250px;
+	z-index: 100;
+}
+
+.button-container {
+	margin: 0;
+}
+
+.cta-grid > div {
+	border: solid 1px fuchsia;
+	display: flex;
+    gap: 48px;
+	z-index: 10;
+}
+
+.cta-grid > div > div {
+	width: 50%;
+	border: solid 1px pink;
+}
+
+.cta-grid > div > div > p {
+	margin: 0;
+}
+
+.cta-grid > div:first-of-type {
+	border: solid 2px lime;
+}
+
+.cta-grid > div:first-of-type h2 {
+	color: var(--light-color);
+	font-size: 4.5rem;
+    line-height: 4rem;
+    letter-spacing: normal;
+    text-transform: capitalize;
+	margin: inherit 0 0 17px;
+}
+
+.cta-grid > div:first-of-type > div > p > picture > img {
+	width: 100%;
+	aspect-ratio: 4 / 3;
+	object-fit: cover;
+	border: 1px solid yellow;
+	display: block;
+}
+
+.cta-grid > div:nth-of-type(2) {
+	border: solid 2px orange;
+}
+
+.cta-grid > div:nth-of-type(3) {
+	border: solid 2px purple;
+}
+
+.cta-grid > div:last-of-type {
+	border: solid 2px cyan;
+}
+
+
+/* responsive */
+@media (width <= 1160px) {
+	.cta-grid > div:first-of-type h2 {
+		margin-top: 20px;
+	}
+}

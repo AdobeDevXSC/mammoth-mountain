@@ -136,24 +136,32 @@ a:hover {
 }
 
 /* buttons */
+
 a.button:any-link, button {
   font-family: var(--body-font-family);
-  display: inline-block;
   box-sizing: border-box;
   text-decoration: none;
   border: 2px solid transparent;
   padding: 5px 30px;
   text-align: center;
   font-style: normal;
-  font-weight: 600;
   cursor: pointer;
-  color: var(--background-color);
-  background-color: var(--link-color);
-  margin: 16px 0;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  border-radius: 30px;
+  width: fit-content;
+  text-transform: uppercase;
+  background-color: var(--link-color);
+  color: var(--light-color);
+  padding:  0 32px;
+  letter-spacing: 1px;
+  font-size: 1.125rem;
+  line-height: 48px;
+  min-height: 48px;
+  border-radius: 0;
+  margin: 0;
+  display: block;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 a.button:hover, a.button:focus, button:hover, button:focus  {
@@ -207,6 +215,11 @@ main .section.cards-container {
 main .section.cards-container .cards-wrapper {
 	margin: 0;
 	max-width: 100%;
+}
+
+main .section.cta-grid-container {
+	border: solid 2px pink;
+	position: relative;
 }
 
 @media (width >= 600px) {

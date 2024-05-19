@@ -22,7 +22,6 @@ export default async function decorate(block) {
 	const cardData = await fetchJson(link);
 	
 	cardData.forEach((event) => {
-		console.log('event', event)
 		const createdCard = document.createElement('li');
 		createdCard.innerHTML = `
 		<a href="${event.url}" aria-label="${event['anchor-text']}"}">
