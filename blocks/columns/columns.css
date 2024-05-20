@@ -77,10 +77,6 @@ main .section.video-container.columns-container .columns-wrapper {
 }
 
 /* bottom row */
-.block.columns > div:nth-of-type(2) {
-
-}
-
 .block.columns > div:nth-of-type(2) > div {
 	display: flex;
 	flex-direction: column;

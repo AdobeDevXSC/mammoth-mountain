@@ -35,43 +35,36 @@
 
 /* icon cards styles */
 .cards.icon {
-	padding: 32px 0;
-  }
+	padding: 48px 0 0;
+	width: 100%;
+	height: 100%;
+}
   
   .cards.icon > ul {
-	display: grid;
-	grid-template-columns: repeat(20, 1fr);
-	column-gap: 2rem;
-	row-gap: 2rem;
-	padding-bottom: 48px;
-	min-width: 100%;
+	display: flex;
+	gap: 40px;
+	justify-content: center;
+	/* max-width: 1200px; */
+	width: 100%;
+	margin: 0 auto;
   }
   
-  /* .cards.icon > ul > a:nth-of-type(1),
-  .cards.icon > ul > a:nth-of-type(2),
-  .cards.icon > ul > a:nth-of-type(3),
-  .cards.icon > ul > a:nth-of-type(4) {
-	  grid-column: span 5;
+  @media(width >= 1080px) {
+	.cards.icon > ul {
+		gap: 90px;
+	}
   }
-  
-  .cards.icon > ul > a:nth-of-type(5),
-  .cards.icon > ul > a:nth-of-type(6),
-  .cards.icon > ul > a:nth-of-type(7),
-  .cards.icon > ul > a:nth-of-type(8),
-  .cards.icon > ul > a:nth-of-type(9) {
-	  grid-column: span 4;
-  } */
-  
+
+  @media(width >= 1200px) {
+	.cards.icon > ul {
+		gap: 120px;
+	}
+  }
+    
   .cards.icon > ul > a {
 	display: block;
-	min-height: 90px;
 	text-align: center;
-	border: 1px solid var(--dark-color);
 	background-color: var(--background-color);
-	padding: 24px 16px;
-	border-radius: 0.5rem;
-	background-color: var(--background-color);
-	margin-top: 16px;
   }
   
   .cards.icon a:hover .cards-card-icon img {
@@ -83,6 +76,8 @@
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
+    gap: 12px;
+    width: 80px;
   }
   
   .cards > ul > a > li > .cards-hide-markdown {
@@ -90,20 +85,14 @@
   }
   
   .cards.icon .cards-card-body {
-	margin: 16px 0 0 0;
-	min-width: 5rem;
-	width: 100%;
 	color: var(--dark-color);
-  }
-  
-  .cards.icon > ul > a > li > .cards-card-body > p {
-	font-size: 1.25rem;
-	line-height: 1.5rem;
-	font-weight: 600;
-	letter-spacing: 0.02rem;
-	width: fit-content;
-	margin: 0 auto;
-	max-width: 148px;
+	font-weight: 700;
+    font-size: 1.125rem;
+    line-height: 1.25rem;
+    letter-spacing: normal;
+    text-transform: uppercase;
+    text-align: center;
+	margin: 0;
   }
   
   .cards.icon .cards-card-icon p {
@@ -121,26 +110,21 @@
 	display: block;
 	width: 40px;
 	height: 40px;
-	filter: invert(10%) sepia(67%) saturate(3125%) hue-rotate(218deg) brightness(109%) contrast(115%);
   }
   
   /* icon card hover styles */
   .cards.icon > ul > a:hover {
-	outline: var(--link-hover-color) solid .125rem;
-	background-color: var(--link-hover-color);
-	cursor: pointer;
-	border-radius: 0.5rem;
-	border-color: var(--link-hover-color);
-	color: var(--light-color);
 	text-decoration: none;
   }
-  
-  .cards.icon > ul > a:hover > li > .cards-card-body > p {
-	text-decoration: underline;
-	color: var(--light-color);
-	text-underline-position: under;
+
+  .cards.icon > ul > a:hover .cards-card-body {
+	color: var(--mammoth-blue);
   }
 
+  .cards.icon > ul a:hover .cards-card-icon img {
+	filter: invert(40%) sepia(99%) saturate(1976%) hue-rotate(175deg) brightness(88%) contrast(98%);
+  }
+  
 
 
   /* editorial cards styles */
@@ -238,7 +222,7 @@
 
 
   /* calendar cards styles */
-  	/* position & styles of all events button (parent container) */
+  	/* position & styles of all events button (controlled by parent container) */
 	.cards-container .default-content-wrapper {
 		display: grid;
 		grid-template-columns: repeat(8, 1fr);
@@ -293,9 +277,10 @@
 	}
 
 
-	.cards.calendar ul {
-		grid-column: 5/ span 4;
-	}
+  .cards.calendar ul {
+	padding-top: 120px; 
+	grid-column: 5/ span 4;
+  }
 
   .cards.calendar > ul > li {
 	border: none;
