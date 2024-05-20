@@ -2,10 +2,11 @@ main .hero-container > div {
   max-width: unset;
 }
   
-main .hero-container {
+ main .hero-container {
   padding: 0;
 }
 
+/*
 .hero {
   position: relative;
   padding: 32px;
@@ -31,31 +32,44 @@ main .hero-container {
   object-fit: cover;
   width: 100%;
   height: 100%;
-}
+} */
 
 
 
 /* video hero styles */
 .video-container.hero-container {
-	/* margin-top: calc(-(var--nav-height)); */
+	/* margin-top: var(--nav-height); */
 	position: relative;
     height: 784px;
 	width: 100%;
 }
 
 /* video styles */
-main .video-wrapper .block.video {
+main .video-wrapper .block.video-hero {
 	margin: 0;
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	height: 100%;
-	width: 100%;
+	display: block;
+	border: solid 2px cyan;
 }
 
+main .video-wrapper .block.video-hero > div {
+	max-height: 784px;
+	min-height: 784px;
+	width: 100%;
+	position: relative;
+}
+
+main .video-wrapper .block.video-hero > div > iframe {
+	position: relative;
+	display: block;
+	max-height: 784px;
+	min-height: 784px;
+}
+
+
 /* text positioning */
-.hero-wrapper .block.hero.video {
+.hero-wrapper .hero.main.video.block {
 	position: absolute;
+	display: block;
 	bottom: 0;
 	left: 0;
 	width: 100%;
@@ -66,14 +80,32 @@ main .video-wrapper .block.video {
 
 .hero-cta-wrapper {
 	max-width: calc(50% - 100px);
+	position: absolute;
+    bottom: 88px;
+	left: 90px;
+}
+
+@media (width <= 1023.95px) {
+    .hero-cta-wrapper {
+        left: 51px;
+    }
 }
 
 .hero-wrapper .block.hero.video h1 {
-	font-size: 5.5rem;
-	line-height: 4.9375rem;
-	letter-spacing: -1.5px;
 	text-transform: uppercase;
+	font-size: 7.625rem;
+    line-height: 6.25rem;
+    letter-spacing: normal;
 	margin: 0;
+	color: var(--light-color);
+}
+
+@media (width <= 1023.95px) {
+	.hero-wrapper .block.hero.video h1 {
+		font-size: 5.5rem;
+		line-height: 4.9375rem;
+		letter-spacing: -1.5px;
+    }
 }
 
 .hero-wrapper .block.hero.video p {
@@ -83,6 +115,7 @@ main .video-wrapper .block.video {
 	color: var(--light-color);
 }
 
+/* controls video/image replacement for mobile */
 @media (width <= 768px) {
 	main .video-wrapper .block.video {
 		display: none;

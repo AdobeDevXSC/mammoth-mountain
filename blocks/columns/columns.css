@@ -42,13 +42,24 @@ main .section.video-container.columns-container {
 	column-gap: 48px;
 	padding: 60px 49px 88px;
 	margin-top: 60px;
+	position: relative;
+}
+
+main .section.video-container.columns-container .video-wrapper {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	column-gap: 48px;
+	position: absolute;
+	top: 60px;
+	left: 49px;
+	min-height: 100%;
+	width: 100%;
 }
 
 /* video sizing */
 main .section.video-container.columns-container .video-wrapper .block.video {
 	display: block;
 	grid-column: 1 / span 1;
-	grid-row: 1;
 }
 
 /* column sizing */
