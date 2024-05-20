@@ -1,5 +1,6 @@
 .section.carousel-container {
-	display: flex;
+	/* display: flex; */
+	display: none;
 }
 
 .section.carousel-container .default-content-wrapper h2 {
@@ -11,7 +12,6 @@
 
 .carousel .carousel-slides-container {
 	position: relative;
-	border: solid 2px blue;
   }
   
   .carousel .carousel-slides,
@@ -89,7 +89,6 @@
   .carousel .carousel-slide .carousel-slide-content {
 	z-index: 1;
 	padding: 1rem;
-	border: solid 1px orange;
 	width: 100%;
 	position: relative;
 	padding: 0 80px 0 14px;
@@ -151,7 +150,6 @@
 	padding: 0;
 	border-radius: 1rem;
 	background-color: rgba(0 0 0);
-	border: solid 2px lime;
   }
   
   .carousel .carousel-slide-indicator button:disabled,

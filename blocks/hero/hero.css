@@ -37,8 +37,7 @@ main .hero-container {
 
 /* video hero styles */
 .video-container.hero-container {
-	margin-top: calc(-(var--nav-height));
-	border: solid 2px fuchsia;
+	/* margin-top: calc(-(var--nav-height)); */
 	position: relative;
     height: 784px;
 	width: 100%;
@@ -56,7 +55,6 @@ main .video-wrapper .block.video {
 
 /* text positioning */
 .hero-wrapper .block.hero.video {
-	border: solid 3px orange;
 	position: absolute;
 	bottom: 0;
 	left: 0;

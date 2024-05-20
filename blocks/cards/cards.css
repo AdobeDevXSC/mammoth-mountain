@@ -130,7 +130,6 @@
   /* editorial cards styles */
   .cards.dark {
 	background-color: var(--dark-color);
-	border: solid 1px pink;
 	width: 100%;
   }
 
