@@ -2,7 +2,7 @@ import { createOptimizedPicture } from '../../scripts/aem.js';
 
 export default async function decorate(block) {
   const isIcon = block.classList.contains('icon');
-  const isCalendar = block.classList.contains('calendar')
+  const isCalendar = block.classList.contains('calendar');
 
   // function for adding spreadsheet json source
   async function fetchJson(link) {
@@ -39,6 +39,7 @@ export default async function decorate(block) {
 		`;
 		ul.append(createdCard);
 	});
+
   } else {
     [...block.children].forEach((row) => {
       const anchor = document.createElement('a');

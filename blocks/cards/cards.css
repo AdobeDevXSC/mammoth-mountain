@@ -131,21 +131,27 @@
   .cards.dark {
 	background-color: var(--dark-color);
 	width: 100%;
+	height: 530px;
   }
 
   .cards.editorial {
 	position: relative;
-    padding: 67px 0 165px;
-    overflow: hidden;
+    /* overflow: hidden; */
   }
 
-  .cards.editorial ul {
-    position: relative;
+  .cards.editorial > ul {
+    position: absolute;
+	display: block;
+	bottom: -165px;
+	left: 0;
     aspect-ratio: 2.185;
     width: 100%;
+	height: 100%;
+	padding: 67px 0 165px;;
   }
 
-  .cards.editorial ul::after {
+  /* fun sticker */
+  .cards.editorial::after {
 	content: '';
 	width: 202px;
 	height: 202px;
@@ -157,18 +163,68 @@
     top: 21px;
   }
 
-  .cards.cards.editorial ul li {
+  .cards > ul > li img {
+	width: 100%;
+	aspect-ratio: unset;
+    z-index: 1;
+	object-fit: cover;
+	display: block;
+	height: 520px;
+  }
+
+  .cards.editorial > ul > li {
 	display: block;
 	translate: none;
     rotate: none;
     scale: none;
-    transform: translate(0%, -50%) translate(0px, -0.211px);
+    /* transform: translate(0%, -50%) translate(0px, -0.211px); */
     opacity: 1;
-    top: 50%;
 	z-index: 1;
 	border: none;
+	position: absolute;
+	max-height: 520px;
   }
 
+  .cards.editorial > ul > li > .cards-card-image {
+	max-height: 520px;
+  }
+
+  .cards.cards.editorial ul li:first-of-type {
+	top: 0;
+  }
+
+  .cards.cards.editorial ul li:nth-of-type(2) {
+	top: 50%;
+	transform: translateY(-50%); 
+  }
+
+  .cards.cards.editorial ul li:last-of-type {
+	bottom: 0;
+  }
+
+  @media (width >= 768px) {
+	.cards.cards.editorial ul li {
+		position: absolute;
+		width: 25%;
+		height: unset;
+  	}
+  }
+
+  @media (width >= 1020px) {
+	.cards.editorial ul li:first-of-type {
+		left: 7.64%;
+	}
+
+	.cards.editorial ul li:nth-of-type(2) {
+		left: 38.19%;
+	}
+
+	.cards.editorial ul li:last-of-type {
+		left: 68.74%;
+	}
+}
+  
+/* black mammoth logo tag in middle image */
   .cards.editorial ul li:nth-of-type(2)::before {
 	content: '';
 	width: 101px;
@@ -193,29 +249,6 @@
 	background-position: center;
 	background-size: contain;
   }
-
-  @media (width >= 768px) {
-	.cards.cards.editorial ul li {
-		position: absolute;
-		width: 25%;
-		height: unset;
-  	}
-  }
-
-
-  @media (width >= 1020px) {
-	.cards.editorial ul li:first-of-type {
-		left: 7.64%;
-	}
-
-	.cards.editorial ul li:nth-of-type(2) {
-		left: 38.19%;
-	}
-
-	.cards.editorial ul li:last-of-type {
-		left: 68.74%;
-	}
-}
 
 
 
@@ -249,15 +282,18 @@
 		transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 	}
 
+	/* card hover states */
 	.cards-container .default-content-wrapper p a:hover {
 		background-color: var(--link-hover-color);
 		text-decoration: none;
 	}
 
+
 	.cards.calendar {
 		display: grid;
 		grid-template-columns: repeat(8, 1fr);
 		position: relative;
+		margin-top: 72px;
 	}
 
 	/* blue mammoth logo */

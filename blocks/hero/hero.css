@@ -48,7 +48,7 @@ main .hero-container > div {
 main .video-wrapper .block.video-hero {
 	margin: 0;
 	display: block;
-	border: solid 2px cyan;
+	height: 784px;
 }
 
 main .video-wrapper .block.video-hero > div {
@@ -56,6 +56,7 @@ main .video-wrapper .block.video-hero > div {
 	min-height: 784px;
 	width: 100%;
 	position: relative;
+	padding-bottom: 0 !important; 
 }
 
 main .video-wrapper .block.video-hero > div > iframe {
