@@ -38,7 +38,7 @@ main .section.columns-container {
 	position: relative;
 }
 
-main .section.columns-container::before {
+.section.columns-container .default-content-wrapper::before {
 	content: '';
 	display: block;
 	position: absolute;
@@ -51,28 +51,13 @@ main .section.columns-container::before {
 }
 
 main .section.columns-container .default-content-wrapper {
-	position: relative;
 	height: 422px;
 	padding-bottom: 56px;
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
 	gap: 48px;	
 	z-index: 3;
-}
-
-main .section.columns-container .default-content-wrapper::after {
-	content: '';
-	width: 140px;
-	height: 140px;
-	display: inline-block;
-	position: absolute;
-	left: 20px;
-	top: 0;
-	background: url(../../icons/whitemammothlogo.png);
-	background-repeat: no-repeat;
-	background-position: center;
-	background-size: contain;
-	z-index: 3;
+	max-width: 1200px;
 }
 
 main .section.columns-container .default-content-wrapper h2 {
@@ -84,6 +69,11 @@ main .section.columns-container .default-content-wrapper h2 {
     text-transform: capitalize;
 	grid-column: 2/ span 1;
 	align-self: flex-end;
+	z-index: 3;
+}
+
+.columns.offset {
+	margin-bottom: 75px;
 }
 
 /* default image styles */
@@ -91,22 +81,11 @@ main .section.columns-container .default-content-wrapper h2 {
 	width: 100%;
 	aspect-ratio: 16 / 9;
 	object-fit: cover;
+	max-height: 432px;
+	display: block;
 }
 
-/* offset images */
-
-
-.columns.offset {
-	/* position: absolute;
-	z-index: 10;
-	height: 100%;
-	top: 150px;
-	left: 50%;
-	transform: translateX(-50%);
-	width: calc(100% - 64px);
-	max-width: 1200px; */
-}
-
+/* offsets */
 .columns.offset > div {
 	display: flex;
 	align-items: flex-start;
@@ -116,11 +95,34 @@ main .section.columns-container .default-content-wrapper h2 {
 	z-index: 100;
 }
 
+.columns.offset > div:last-of-type {
+	margin-bottom: 0;
+}
+
 .columns.offset > div:first-of-type > div:first-of-type {
 	position: absolute;
-	top: -315px;
+	top: -310px;
 	left: 0;
 	width: 576px;
+}
+
+.columns.offset > div:nth-of-type(2) {
+	z-index: 1;
+}
+
+.columns.offset > div:first-of-type > div:first-of-type::after {
+	content: '';
+	width: 140px;
+	height: 140px;
+	display: block;
+	position: absolute;
+	left: 20px;
+	top: -185px;
+	background: url(../../icons/whitemammothlogo.png);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
+	z-index: 30;
 }
 
 .columns.offset > div:nth-of-type(2n) > div:first-of-type {
@@ -148,6 +150,7 @@ main .section.columns-container .default-content-wrapper h2 {
 	height: 100%;
 	margin: 0;
 	position: absolute;
+	z-index: 1;
 }
 
 .columns.offset > div .linked-image-wrapper p a {
@@ -173,6 +176,14 @@ main .section.columns-container .default-content-wrapper h2 {
     margin: 16px 30px;
 }
 
+.columns.offset > div .linked-image-wrapper h4:hover {
+	cursor: pointer;
+}
+
+.columns.offset > div .linked-image-wrapper h4:hover {
+	cursor: pointer;
+}
+
 .columns.offset > div .linked-image-wrapper h4::after {
 	content: '';
 	display: inline-block;
@@ -185,12 +196,6 @@ main .section.columns-container .default-content-wrapper h2 {
 	background: url(../../icons/chevron-right.svg);
 	background-repeat: no-repeat;
 	filter: invert(100%) sepia(99%) saturate(0%) hue-rotate(25deg) brightness(103%) contrast(101%);
-}
-
-.columns.offset > div .linked-image-wrapper p a picture img {
-	display: block;
-	width: 100%;
-    object-fit: cover;
 }
 
 .columns.offset > div .linked-image-wrapper:first-of-type p a picture img {
