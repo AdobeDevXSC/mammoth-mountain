@@ -32,3 +32,69 @@ main .hero-container {
   width: 100%;
   height: 100%;
 }
+
+
+
+/* video hero styles */
+.video-container.hero-container {
+	margin-top: calc(-(var--nav-height));
+	border: solid 2px fuchsia;
+	position: relative;
+    height: 784px;
+	width: 100%;
+}
+
+/* video styles */
+main .video-wrapper .block.video {
+	margin: 0;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+}
+
+/* text positioning */
+.hero-wrapper .block.hero.video {
+	border: solid 3px orange;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	background: linear-gradient(90deg, rgba(0, 0, 0, 0.25) 0%, rgba(255, 255, 255, 0.05) 100%);
+}
+
+.hero-cta-wrapper {
+	max-width: calc(50% - 100px);
+}
+
+.hero-wrapper .block.hero.video h1 {
+	font-size: 5.5rem;
+	line-height: 4.9375rem;
+	letter-spacing: -1.5px;
+	text-transform: uppercase;
+	margin: 0;
+}
+
+.hero-wrapper .block.hero.video p {
+	font-size: 1rem;
+	line-height: 1.625rem;
+	margin: 30px 0 0 0;
+	color: var(--light-color);
+}
+
+@media (width <= 768px) {
+	main .video-wrapper .block.video {
+		display: none;
+		visibility: hidden;
+	}
+}
+
+@media (width >= 768px) {
+	.block.video .hero-image-wrapper {
+		display: none;
+		visibility: hidden;
+	}
+}

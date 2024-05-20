@@ -31,3 +31,194 @@
     order: unset;
   }
 }
+
+/* offset columns */
+/* dark background block and section heading */
+main .section.columns-container {
+	position: relative;
+}
+
+main .section.columns-container::before {
+	content: '';
+	display: block;
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 542px;
+	width: 100%;
+	background-color: var(--dark-color);
+	z-index: 1;
+}
+
+main .section.columns-container .default-content-wrapper {
+	position: relative;
+	height: 422px;
+	padding-bottom: 56px;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 48px;	
+	z-index: 3;
+}
+
+main .section.columns-container .default-content-wrapper::after {
+	content: '';
+	width: 140px;
+	height: 140px;
+	display: inline-block;
+	position: absolute;
+	left: 20px;
+	top: 0;
+	background: url(../../icons/whitemammothlogo.png);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
+	z-index: 3;
+}
+
+main .section.columns-container .default-content-wrapper h2 {
+	color: var(--light-color);
+	margin: 0;
+	font-size: 4.5rem;
+    line-height: 4rem;
+    letter-spacing: normal;
+    text-transform: capitalize;
+	grid-column: 2/ span 1;
+	align-self: flex-end;
+}
+
+/* default image styles */
+.columns.offset > div picture img {
+	width: 100%;
+	aspect-ratio: 16 / 9;
+	object-fit: cover;
+}
+
+/* offset images */
+
+
+.columns.offset {
+	/* position: absolute;
+	z-index: 10;
+	height: 100%;
+	top: 150px;
+	left: 50%;
+	transform: translateX(-50%);
+	width: calc(100% - 64px);
+	max-width: 1200px; */
+}
+
+.columns.offset > div {
+	display: flex;
+	align-items: flex-start;
+	gap: 48px;
+	margin-bottom: 48px;
+	position: relative;
+	z-index: 100;
+}
+
+.columns.offset > div:first-of-type > div:first-of-type {
+	position: absolute;
+	top: -315px;
+	left: 0;
+	width: 576px;
+}
+
+.columns.offset > div:nth-of-type(2n) > div:first-of-type {
+	margin-top: 125px; 
+}
+
+.columns.offset > div:last-of-type > div:nth-of-type(2n) {
+	margin-top: -125px;
+}
+
+/* image link styles */
+.columns.offset > div .linked-image-wrapper {
+	position: relative;
+}
+
+.columns.offset > div .linked-image-wrapper p {
+	position: relative;
+	margin: 0;
+}
+
+.columns.offset > div .linked-image-wrapper p::before {
+	background-color: var(--dark-color);
+    opacity: 0.2;
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	position: absolute;
+}
+
+.columns.offset > div .linked-image-wrapper p a {
+	display: block;
+}
+
+.columns.offset > div .linked-image-wrapper p a picture {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+.columns.offset > div .linked-image-wrapper h4 {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	color: var(--light-color);
+	font-size: 1.875rem;
+    line-height: 2.4375rem;
+	text-transform: capitalize;
+    letter-spacing: normal;
+	bottom: 0;
+    margin: 16px 30px;
+}
+
+.columns.offset > div .linked-image-wrapper h4::after {
+	content: '';
+	display: inline-block;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-40%);
+	margin-left: 2px;
+	width: 13px;
+	height: 22px;
+	background: url(../../icons/chevron-right.svg);
+	background-repeat: no-repeat;
+	filter: invert(100%) sepia(99%) saturate(0%) hue-rotate(25deg) brightness(103%) contrast(101%);
+}
+
+.columns.offset > div .linked-image-wrapper p a picture img {
+	display: block;
+	width: 100%;
+    object-fit: cover;
+}
+
+.columns.offset > div .linked-image-wrapper:first-of-type p a picture img {
+    aspect-ratio: 4 / 3;
+}
+
+/* cta styles */
+.columns.offset > div:last-of-type > div:first-of-type {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+}
+
+.columns.offset > div:last-of-type > div:first-of-type h3,
+.columns.offset > div:last-of-type > div:first-of-type p {
+	text-align: left;
+	width: fit-content;
+	margin: 0 30px 0 0;
+}
+
+.columns.offset > div:last-of-type > div:first-of-type h3 {
+	text-transform: uppercase;
+}
+
+.columns.offset > div:last-of-type > div:first-of-type p:first-of-type {
+	font-size: 1.125rem;
+	line-height: 1.75rem;
+	letter-spacing: 0.0493125rem;
+	text-transform: capitalize;
+	margin: 18px 30px 18px 0;
+}

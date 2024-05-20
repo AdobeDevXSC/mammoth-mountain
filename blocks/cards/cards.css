@@ -211,7 +211,7 @@
 	background-size: contain;
   }
 
-  @media ((width >= 768px) ) {
+  @media (width >= 768px) {
 	.cards.cards.editorial ul li {
 		position: absolute;
 		width: 25%;
