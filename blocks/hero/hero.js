@@ -33,5 +33,5 @@ export default async function decorate(block) {
 	  img.removeAttribute('loading'); // Lighthouse recommendation: remove lazy-loading
 	  img.setAttribute('loading', 'eager');
 	});
-  }
+}
   
