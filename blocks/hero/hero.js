@@ -1,37 +1,17 @@
-/**
- * loads and decorates the hero
- * @param {Element} block The hero block element
- */
+import { makeVideo } from '../../scripts/scripts.js';
+import { decorateIcons } from '../../scripts/aem.js';
 
 export default async function decorate(block) {
-	const imgBlockChildren = block.children[0];
-	imgBlockChildren.className = 'hero-image-wrapper';
-	[...imgBlockChildren.children].forEach((child) => {
-	  const pictureElement = child.querySelectorAll('picture');
-	  if (pictureElement.length > 0) {
-		pictureElement.forEach((pic, index) => {
-		  if (index === 0) {
-			pic.classList.add('hero-desktop');
-		  } else if (index === 1) {
-			pic.classList.add('hero-mobile');
-		  }
-		  child.className = 'hero-image';
-		});
-	  }
-	});
+  decorateIcons(block);
   
-	if (block.children.length > 1) {
-	  const textBlockChildren = block.children[1];
-	  textBlockChildren.className = 'hero-cta-wrapper';
-	  [...textBlockChildren.children].forEach((child) => {
-		child.className = 'hero-textbox';
-	  });
-	}
-  
-	const imageElements = block.querySelectorAll('img');
-	imageElements.forEach((img) => {
-	  img.removeAttribute('loading'); // Lighthouse recommendation: remove lazy-loading
-	  img.setAttribute('loading', 'eager');
-	});
+  if (Object.values(block.classList).includes('video')) {
+    const videoSrc = block.querySelector('div > a');
+
+    if(videoSrc.href.includes(window.hlx.codeBasePath)) {
+      videoSrc.href = videoSrc.text;
+    }
+
+    makeVideo(block.querySelector('div'), videoSrc.href);
+    videoSrc.remove();
+  }
 }
-  
