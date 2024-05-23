@@ -413,6 +413,7 @@ footer > div .footer-columns > div:nth-of-type(4) ul li {
 		margin-bottom: 0;
 		position: relative;
 	}
+	
 	footer > div .footer-columns > div:nth-of-type(2) h4::after {
 		content: '';
 		width: 22px;

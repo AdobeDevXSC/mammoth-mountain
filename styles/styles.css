@@ -197,6 +197,41 @@ main img {
   width: 100%;
 }
 
+/* chat button */
+main::before {
+	content: "";
+	position: fixed;
+	display: block;
+	background-color: var(--mammoth-blue);
+    right: 14px !important;
+    bottom: 120px !important;
+	padding: 8px;
+    border-radius: 8px;
+    color: #fff;
+    border-radius: 8px;
+    min-width: 54px;
+    height: 54px;
+    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, .16), 0 3px 12px 0 rgba(0, 0, 0, .08);
+    transition: all .3s ease 0s;
+	cursor: pointer;
+	z-index: 200;
+}
+
+main::after {
+	content: '';
+	width: 56px;
+	height: 58px;
+	background: url(../icons/speech-bubble.svg);
+	background-repeat: no-repeat;
+	background-position: center center;
+	display: block;
+	position: fixed;
+    right: 20px !important;
+	bottom: 120px;
+	z-index: 200;
+	transform: scaleX(-1);
+}
+
 /* sections */
 main .section {
   padding: 64px 16px;
@@ -212,7 +247,6 @@ main .section.cards-container .cards-wrapper {
 }
 
 main .section.cta-grid-container {
-	border: solid 2px pink;
 	position: relative;
 }
 
