@@ -136,7 +136,6 @@ a:hover {
 }
 
 /* buttons */
-
 a.button:any-link, button {
   font-family: var(--body-font-family);
   box-sizing: border-box;
@@ -197,7 +196,7 @@ main img {
   width: 100%;
 }
 
-/* chat button */
+/* floating chat button */
 main::before {
 	content: "";
 	position: fixed;
@@ -254,17 +253,6 @@ main .section.cta-grid-container {
   main .section {
     padding: 64px 32px;
   }
-
-  /* custom block section padding */
-  main .section.fullwidth-image-container {	
-	padding: 0 0 78px;
-	margin: 48px auto;
-	width: calc(100% - 40px);
-  }
-
-  main .section.cards-container {	
-	padding: 0;
-  }
 }
 
 @media (width >= 900px) {
@@ -273,7 +261,6 @@ main .section.cta-grid-container {
     margin: auto;
   }
 }
-
 
 /* section metadata */
 main .section.light,

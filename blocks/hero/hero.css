@@ -32,6 +32,15 @@ main .hero-container {
   height: 784px;
 }
 
+.hero.video > .hero-cta {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 1;
+  }
+
 .hero.video > .hero-cta > div {
   max-width: 600px;
   position: absolute;
@@ -62,10 +71,10 @@ main .hero-container {
 
 @media (width <= 1020px) {
 	.hero h1 {
-		font-size: 3.75rem;
-		line-height: 4.9375rem;
-		letter-spacing: -1.5px;
-  }
+        font-size: 5.5rem;
+        line-height: 4.9375rem;
+        letter-spacing: -1.5px;
+  	}
 
 	.hero p:not(.button-container) {
 		font-size: 1rem;
@@ -86,29 +95,46 @@ main .hero-container {
 }
 
 @media (width <= 768px) {
-  .hero {
-    /* max-height: 50vh; */
-	height: 584px;
-  }
+	main .hero-container > div {
+		height: 584px;
+	}
 
-  .hero.video video {
-    display: none;
-  }
+	.hero {
+		height: 584px;
+	}
 
-  .hero .mobile-image-wrapper {
-	display: block;
-	width: 100%;
-  }
+	.hero.video > .hero-cta {
+		max-width: calc(100% - 40px);
+	}
 
-  .hero .mobile-image-wrapper picture {
-	display: inline-block;
-	height: 584px;
-  }
+	.hero.video > div:first-of-type {
+		display: none;
+	}
 
-  .hero .mobile-image-wrapper picture img {
-	display: block;
-	object-fit: cover;
-	height: 100%;
-	width: 100%;
-  }
+	.hero h1 {
+		font-size: 3.875rem;
+        line-height: 3.4375rem;
+        letter-spacing: -1.5px;
+	}
+
+	.hero.video .mobile-image-wrapper {
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+
+	.hero.video .mobile-image-wrapper picture {
+		display: inline-block;
+		height: 584px;
+		overflow: hidden;
+	}
+
+	.hero.video .mobile-image-wrapper picture img {
+		display: block;
+		object-fit: cover;
+		width: 100%;
+		height: 125%;
+		min-height: 584px;
+		transform: scale(155%);
+	}
 }

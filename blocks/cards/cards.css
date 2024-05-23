@@ -32,6 +32,10 @@
 }
 
 
+/* cards section padding reset */
+main .section.cards-container {	
+	padding: 0;
+}
 
 /* icon cards styles */
 .cards.icon {

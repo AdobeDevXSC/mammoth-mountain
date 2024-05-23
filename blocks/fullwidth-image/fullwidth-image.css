@@ -1,3 +1,9 @@
+main .section.fullwidth-image-container {	
+	padding: 0 0 78px;
+	margin: 48px auto;
+	width: calc(100% - 40px);
+  }
+
 .fullwidth-image > div > div > picture {
 	position: relative;
 }
@@ -29,6 +35,10 @@
 }
 
 @media (width <= 600px) {
+	main .section.fullwidth-image-container {
+		width: 100%;
+	}
+
 	.fullwidth-image > div:first-of-type {
 		display: none;
 	}
