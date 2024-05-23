@@ -1,5 +1,6 @@
 main .hero-container > div {
   max-width: unset;
+  height: 784px;
 }
   
 main .hero-container {
@@ -9,13 +10,15 @@ main .hero-container {
 .hero {
   position: relative;
   padding: 0;
-  max-height: 85vh;
+  height: 100%;
+  width: 100%;
   overflow: hidden;
 }
 
 .hero::before {
   content: "";
   position: absolute;
+  display: block;
   top: 0;
   left: 0;
   width: 100%;
@@ -23,22 +26,17 @@ main .hero-container {
   background-image: linear-gradient(to top, #f000, #041e4280);
 }
 
-.hero.video > div:last-of-type {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-}
-
 .hero.video video {
   object-fit: cover;
   width: 100%;
+  height: 784px;
 }
 
-.hero.video > div:last-of-type > div {
+.hero.video > .hero-cta > div {
   max-width: 600px;
   position: absolute;
-  bottom: 5rem;  
+  bottom: 5rem;
+  left: 0;
   padding-left: 5rem;
 }
 
@@ -58,7 +56,11 @@ main .hero-container {
 	color: var(--light-color);
 }
 
-@media (width <= 992px) {
+.hero .mobile-image-wrapper {
+	display: none;
+  }
+
+@media (width <= 1020px) {
 	.hero h1 {
 		font-size: 3.75rem;
 		line-height: 4.9375rem;
@@ -76,19 +78,39 @@ main .hero-container {
 		margin-bottom: 0;
 	}
 
-  .hero.video > div:last-of-type > div {
-    max-width: 100%;
-    bottom: 3rem;
-    padding-left: 1.5rem;
-  }
+	.hero.video > .hero-cta > div {
+		max-width: 100%;
+		bottom: 3rem;
+		padding-left: 1.5rem;
+  	}
 }
 
 @media (width <= 768px) {
   .hero {
-    max-height: 50vh;
+    /* max-height: 50vh; */
+	height: 584px;
   }
 
   .hero.video video {
-    width: unset;
+    display: none;
+  }
+
+
+  
+  .hero .mobile-image-wrapper {
+	display: block;
+	width: 100%;
+  }
+
+  .hero .mobile-image-wrapper picture {
+	display: inline-block;
+	height: 584px;
+  }
+
+  .hero .mobile-image-wrapper picture img {
+	display: block;
+	object-fit: cover;
+	height: 100%;
+	width: 100%;
   }
 }
