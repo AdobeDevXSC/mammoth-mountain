@@ -5,11 +5,16 @@
 
 export default function decorate(block) {
 	const cols = [...block.children];
-	cols.forEach((col) => {
+	cols.forEach((col, index) => {
 		col.classList.add('vertical-scroll-item')
+		col.classList.add(`trigger-${index + 1}`)
+		var image = col.children[1];
+		var textBoxes = col.children[0];
+		textBoxes.classList.add('text-container')
 	});
 
 	var items = document.querySelectorAll('.vertical-scroll-item');
+	console.log('items', items);
 	function isElementInViewport(el) {
 		var rect = el.getBoundingClientRect();
 		return (
@@ -31,6 +36,12 @@ export default function decorate(block) {
 		}
 	}
 
-	block.addEventListener("load", callbackFunc);
-	block.addEventListener("scroll", callbackFunc);
+	window.addEventListener("scroll", function (event) {
+        let scroll_y = this.scrollY;
+        console.log('scroll position', scroll_y);
+	})
+
+	window.addEventListener("load", callbackFunc);
+	window.addEventListener("scroll", callbackFunc);
+
 };
