@@ -4,6 +4,7 @@
 
 .section.cards-carousel .carousel-wrapper {
 	max-width: 100%;
+	overflow-x: hidden;
 }
 
 .section.cards-carousel.carousel-container .carousel {
@@ -11,6 +12,7 @@
 	padding-left: 8%;
 	align-items: center;
 	position: relative;
+
 }
 
 .carousel .carousel-slides,
