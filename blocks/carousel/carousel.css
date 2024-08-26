@@ -12,7 +12,6 @@
 	padding-left: 8%;
 	align-items: center;
 	position: relative;
-
 }
 
 .carousel .carousel-slides,
@@ -36,7 +35,7 @@
 .carousel .carousel-slide {
   flex: 0 0 37.33%;
   scroll-snap-align: start;
-	visibility: visible;
+  visibility: visible;
   width: 100%;
 }
 
@@ -215,13 +214,14 @@
 
 	.carousel .nav-title-container {
 		z-index: 10;
+		position: relative;
 	}
 
 	.carousel .nav-title-container .wrapper-div {
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
-		height: 932px;
+		min-height: 932px;
 		min-width: 400px;
 		position: absolute;
 		top: -98px;

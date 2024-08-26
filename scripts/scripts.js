@@ -85,7 +85,6 @@ export function isBlockLibrary() {
   }
   
   /**
-   * TODO: Update
    * @param {*} element
    * @param {*} href
    */
