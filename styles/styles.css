@@ -17,14 +17,16 @@
   --link-hover-color: #00578E;
   --light-color: #fff;
   --dark-color: #000;
-  /* --text-color: black; */
 
   /* fonts */
   --body-font-family: trade-gothic-next;
   --subheading-font-family: trade-gothic-next-condensed, sans-serif;
   --heading-font-family: itc-lubalin;
   --alterra-font: proxima-nova;
-  /* --fixed-font-family: 'Roboto Mono', menlo, consolas, 'Liberation Mono', monospace; */
+
+  /* hero gradients */
+  --summer-gradient: linear-gradient(90deg, rgba(0, 0, 0, 0.25) 0%, rgba(255, 255, 255, 0.05) 100%);
+  --winter-gradient: linear-gradient(to top, #f000, #041e4280);
 
   /* body sizes */
   --body-font-size-m: 22px;
@@ -41,10 +43,6 @@
 
   /* nav height */
   --nav-height: 64px;
-
-  /* responsive */
-  --desktop: 1020px;
-  --mobile: 768px;
 }
 
 @font-face {

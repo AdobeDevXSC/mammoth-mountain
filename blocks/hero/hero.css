@@ -23,7 +23,14 @@ main .hero-container {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, rgba(0, 0, 0, 0.25) 0%, rgba(255, 255, 255, 0.05) 100%);
+}
+
+.hero.winter::before {
+	background: var(--winter-gradient);
+}
+
+.hero.summer::before {
+	background: var(--summer-gradient);
 }
 
 .hero.video video {
@@ -134,14 +141,29 @@ main .hero-container {
 		display: inline-block;
 		height: 584px;
 		width: 100%;
-		overflow: hidden;
+
 	}
 
 	.hero.video .mobile-image-wrapper img {
 		display: block;
 		object-fit: cover;
-		object-position: 50% 47%;
 		width: 100%;
+	}
+
+	/* summer */
+	.hero.video.summer .mobile-image-wrapper picture {
+		overflow: hidden;
+	}
+
+	.hero.video.summer .mobile-image-wrapper img {
+		object-position: 50% 47%;
 		max-height: 584px;
+	}
+
+	/* winter */
+	.hero.video.winter .mobile-image-wrapper picture img {
+		height: 125%;
+		min-height: 584px;
+		transform: scale(155%);
 	}
 }
