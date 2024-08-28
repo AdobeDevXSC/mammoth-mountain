@@ -20,8 +20,10 @@
   /* --text-color: black; */
 
   /* fonts */
-  --body-font-family: trade-gothic-next, sans-serif;
+  --body-font-family: trade-gothic-next;
+  --subheading-font-family: trade-gothic-next-condensed, sans-serif;
   --heading-font-family: itc-lubalin;
+  --alterra-font: proxima-nova;
   /* --fixed-font-family: 'Roboto Mono', menlo, consolas, 'Liberation Mono', monospace; */
 
   /* body sizes */
@@ -137,7 +139,7 @@ a:hover {
 
 /* buttons */
 a.button:any-link, button {
-  font-family: var(--body-font-family);
+  font-family: trade-gothic-next-condensed;
   box-sizing: border-box;
   text-decoration: none;
   border: 2px solid transparent;
@@ -158,6 +160,7 @@ a.button:any-link, button {
   line-height: 48px;
   min-height: 48px;
   border-radius: 0;
+  font-weight: 400;
   margin: 0;
   display: block;
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;

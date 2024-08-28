@@ -72,6 +72,7 @@ main .section.countdown-container .countdown-wrapper::before {
 	font-size: 2.75rem;
 	line-height: 2.5rem;
 	letter-spacing: -0.5px;
+	font-weight: 600;
 	text-transform: uppercase;
 }
 

@@ -3,6 +3,7 @@ footer {
   background-color: var(--dark-color);
   color: var(--light-color);
   font-size: var(--body-font-size-s);
+  border: solid 2px lime;
 }
 
 footer .footer {
@@ -260,8 +261,8 @@ footer > div .footer-columns > div:nth-of-type(3) > div:nth-of-type(3) a {
 
 
 /* alterra mtn band */
-footer > div .footer-columns > div:nth-of-type(4) {
-	font-family: proxima-nova, sans-serif;
+.footer > div > .section:nth-of-type(4) {
+	font-family: var(--alterra-font);
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -271,7 +272,8 @@ footer > div .footer-columns > div:nth-of-type(4) {
 	padding: 20px 1rem;
 }
 
-footer > div .footer-columns > div:nth-of-type(4) .button-container a {
+.footer > div > .section:nth-of-type(4) .button-container a {
+	font-family: var(--alterra-font);
 	background-color: transparent;
 	font-size: 0.875rem;
     line-height: 1.3125rem;
@@ -286,11 +288,11 @@ footer > div .footer-columns > div:nth-of-type(4) .button-container a {
 	min-height: auto;
 }
 
-footer > div .footer-columns > div:nth-of-type(4) .button-container a:hover {
+.footer > div > .section:nth-of-type(4) .button-container a:hover {
 	text-decoration: underline;
 }
 
-footer > div .footer-columns > div:nth-of-type(4) ul {
+.footer > div > .section:nth-of-type(4) ul {
 	display: flex;
 	list-style: none;
 	margin: 0;
@@ -298,16 +300,16 @@ footer > div .footer-columns > div:nth-of-type(4) ul {
 
 }
 
-footer > div .footer-columns > div:nth-of-type(4) ul li {
+.footer > div > .section:nth-of-type(4) ul li {
 	margin-left: 52px;	
 }
 
-footer > div .footer-columns > div:nth-of-type(4) ul li:first-of-type {
+.footer > div > .section:nth-of-type(4) ul li:first-of-type {
 	margin: 0;
 }
 
-footer > div .footer-columns > div:nth-of-type(4) ul li a,
-footer > div .footer-columns > div:nth-of-type(4) ul li {
+.footer > div > .section:nth-of-type(4) ul li a,
+.footer > div > .section:nth-of-type(4) ul li {
 	color: var(--dark-color);
 	font-size: 0.875rem;
     line-height: 1.3125rem;
@@ -380,16 +382,16 @@ footer > div .footer-columns > div:nth-of-type(4) ul li {
 	}
 
 	/* alterra mtn band */
-	footer > div .footer-columns > div:nth-of-type(4) {
+	.footer > div > .section:nth-of-type(4) {
 		flex-direction: column;
 		align-items: flex-start;
 	}
 
-	footer > div .footer-columns > div:nth-of-type(4) .button-container {
+	.footer > div > .section:nth-of-type(4) .button-container {
 		margin-bottom: 16px;
 	}
 
-	footer > div .footer-columns > div:nth-of-type(4) .button-container a {
+	.footer > div > .section:nth-of-type(4) .button-container a {
 		font-size: 1rem;
 	}
 }
@@ -477,22 +479,21 @@ footer > div .footer-columns > div:nth-of-type(4) ul li {
 	}
 
 	/* alterra mtn band */
-	footer > div .footer-columns > div:nth-of-type(4) { 
+	.footer > div > .section:nth-of-type(4) { 
 		padding: 18px 16px;
 	}
 
-	footer > div .footer-columns > div:nth-of-type(4) ul {
+	.footer > div > .section:nth-of-type(4) ul {
 		flex-direction: column;
 	}
 
-	footer > div .footer-columns > div:nth-of-type(4) ul li {
+	.footer > div > .section:nth-of-type(4) ul li {
 		margin-left: 0;
 		height: 24px;
 	}
 	
-	footer > div .footer-columns > div:nth-of-type(4) .button-container a {
+	.footer > div > .section:nth-of-type(4) .button-container a {
 		font-size: 0.875rem;
 		line-height: 1.3125rem;
 	}
-
 }

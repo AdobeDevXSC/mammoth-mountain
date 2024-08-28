@@ -110,6 +110,12 @@ main .section.cards-container {
 		margin-right: 20px;
 	}
   }
+
+  @media(width <= 1080px) {
+	.cards.icon > ul {
+		gap: 64px;
+	}
+  }
   
   @media(width >= 1080px) {
 	.cards.icon > ul {
