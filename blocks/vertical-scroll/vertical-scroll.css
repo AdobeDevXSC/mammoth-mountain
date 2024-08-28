@@ -1,10 +1,20 @@
 .section.vertical-scroll-container {
 	padding: 0;
 	position: relative;
-	/* height: 100vh;
-	max-width: 100%;
-	overflow-y: scroll; */
+
 }
+
+.section.vertical-scroll-container.fixed {
+	border: solid 2px lime;
+	position: fixed;
+	top: 0;
+	overflow-y: scroll;
+	height: 100vh;
+	width: 100%;
+	max-width: 100%;
+}
+
+
 
 .section > div.vertical-scroll-wrapper {
 	max-width: unset;
@@ -54,20 +64,19 @@
 .vertical-scroll {
 	position: relative;
 	box-sizing: border-box;
-	border: solid 2px orange;
 }
 
-.vertical-scroll.test {
+.vertical-scroll {
 	border: solid 5px fuchsia;
 }
 
-.vertical-scroll > div:not(:last-of-type) {
+/* .vertical-scroll > div:not(:last-of-type) {
 	position: absolute;
 	left: 0;
 	top: 50%;
 	transform: translateY(-50%);
 	z-index: 2;
-}
+} */
 
 .vertical-scroll > div > .text-wrapper {
 	background-color: var(--light-color);
@@ -78,7 +87,7 @@
 	flex-direction: column;
 }
 
-.vertical-scroll > div:first-of-type .text-wrapper {
+/* .vertical-scroll > div:first-of-type .text-wrapper {
 	border: solid 2px purple;
 	z-index: 6;
 	opacity: 1;
@@ -100,15 +109,15 @@
 	border: solid 2px fuchsia;
 	z-index: 3;
 	opacity: 0;
-}
+} */
 
-.image-wrapper {
+/* .image-wrapper {
 	width: 100%;
 	height: 100vh;
 	overflow-y: scroll;
-}
+} */
 
-.image-wrapper > picture {
+/* .image-wrapper > picture {
 	max-width: 826.875px;
     width: 826.875px;
     max-height: 1032px;
@@ -136,7 +145,7 @@
 .image-wrapper > picture:last-of-type {
 	top: 200px;
 	opacity: 0;
-}
+} */
 
 .image-wrapper > picture > img {
 	width: 100%;
@@ -153,7 +162,3 @@
 		border: solid 1px orange;
 	}
 }
-
-
-
-
