@@ -39,7 +39,6 @@ main .section.cards-container {
 
 /* icon cards styles */
 .cards.icon {
-	padding: 48px 0 0;
 	width: 100%;
 	height: 100%;
 }
@@ -47,22 +46,11 @@ main .section.cards-container {
   .cards.icon > ul {
 	display: flex;
 	gap: 40px;
+	align-items: center;
 	justify-content: center;
-	/* max-width: 1200px; */
 	width: 100%;
 	margin: 0 auto;
-  }
-  
-  @media(width >= 1080px) {
-	.cards.icon > ul {
-		gap: 90px;
-	}
-  }
-
-  @media(width >= 1200px) {
-	.cards.icon > ul {
-		gap: 120px;
-	}
+	padding: 48px 0;
   }
     
   .cards.icon > ul > a {
@@ -71,7 +59,7 @@ main .section.cards-container {
 	background-color: var(--background-color);
   }
   
-  .cards.icon a:hover .cards-card-icon img {
+  .cards.icon a:hover .cards-card-image img {
 	filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(175deg) brightness(103%) contrast(101%);
   }
   
@@ -79,9 +67,10 @@ main .section.cards-container {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: center;
+	justify-content: space-between;
     gap: 12px;
-    width: 80px;
+    height: 80px;
+	width: 72px;
   }
   
   .cards > ul > a > li > .cards-hide-markdown {
@@ -98,22 +87,40 @@ main .section.cards-container {
     text-align: center;
 	margin: 0;
   }
-  
-  .cards.icon .cards-card-icon p {
-	margin: 0;
-	height: 40px;
-  }
-  
-  .cards.icon .cards-card-icon span {
-	width: 40px;
-	height: 40px;
-  }
-  
-  .cards.icon .cards-card-icon img {
+      
+  .cards.icon .cards-card-image img {
 	line-height: 0;
 	display: block;
-	width: 40px;
 	height: 40px;
+	max-width: 50px;
+	object-fit: contain;
+  }
+
+  @media(width <= 768px) {
+	.cards.icon > ul {
+		overflow-x: scroll;
+		justify-content: flex-start;
+	}
+
+	.cards.icon > ul > a:first-of-type > li {
+		margin-left: 20px;
+	}
+
+	.cards.icon > ul > a:last-of-type > li {
+		margin-right: 20px;
+	}
+  }
+  
+  @media(width >= 1080px) {
+	.cards.icon > ul {
+		gap: 90px;
+	}
+  }
+
+  @media(width >= 1200px) {
+	.cards.icon > ul {
+		gap: 120px;
+	}
   }
   
   /* icon card hover styles */
@@ -125,7 +132,7 @@ main .section.cards-container {
 	color: var(--mammoth-blue);
   }
 
-  .cards.icon > ul a:hover .cards-card-icon img {
+  .cards.icon > ul a:hover .cards-card-image img {
 	filter: invert(40%) sepia(99%) saturate(1976%) hue-rotate(175deg) brightness(88%) contrast(98%);
   }
   
