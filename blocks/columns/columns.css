@@ -19,7 +19,7 @@
   display: block;
 }
 
-@media (width >= 900px) {
+@media (width >= 767px) {
   .columns > div {
     align-items: center;
     flex-direction: unset;
@@ -118,6 +118,7 @@ main .section.with-video.columns-container .columns-wrapper {
 }
 
 .block.columns.video > div:nth-of-type(2) > div:last-of-type h5 {
+	font-weight: 400;
     font-size: 1rem;
     line-height: 1.5rem;
     letter-spacing: 0.15px;
@@ -133,9 +134,20 @@ main .section.with-video.columns-container .columns-wrapper {
 	.block.columns.video > div {
 		gap: 16px;
 	}
+
+	.block.columns.video > div:nth-of-type(2) > div:last-of-type p {
+		font-size: 0.875rem;
+	}
+
+	.block.columns.video > div:nth-of-type(2) > div:last-of-type h2,
+	.block.columns.video > div:nth-of-type(2) > div:last-of-type p,
+	.block.columns.video > div:nth-of-type(2) > div:last-of-type h5 {
+		margin-left: 32px;
+		margin-right: 32px;
+	}
 }
 
-@media (width <= 900px) {
+@media (width <= 767px) {
 	main .section.with-video.columns-container {
 		margin: 55px 0 60px;
 	}
@@ -172,10 +184,17 @@ main .section.with-video.columns-container .columns-wrapper {
 
 	.block.columns.video > div:nth-of-type(2) > div:last-of-type p {
 		margin: 0 30px;
+		font-size: 1rem;
+        line-height: 1.75rem;
+        letter-spacing: normal;
 	}
 
 	.block.columns.video > div:nth-of-type(2) > div:last-of-type h5 {
 		margin: 24px 30px 47px;
+		font-size: 1rem;
+        line-height: 1.75rem;
+        letter-spacing: normal;
+		font-weight: 700;
 	}
 }
 
