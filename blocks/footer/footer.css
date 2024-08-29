@@ -22,10 +22,9 @@ footer > div .section:first-of-type {
 
 /* e-mail */
 footer > div .section:first-of-type div {
-	display: flex;
-	flex-grow: 1;
-	flex-direction: column;
-	padding-right: 16px;
+	display: grid;
+	grid-template-columns: repeat(12, 1fr);
+	grid-template-rows: repeat(3);
 }
 
 footer > div .section:first-of-type div > h3 {
@@ -36,6 +35,8 @@ footer > div .section:first-of-type div > h3 {
 	letter-spacing: normal;
 	padding-bottom: 4px;
 	margin: 0 0 8px 0;
+	grid-column: 1/ span 6;
+	grid-row: 1;
 }
 
 footer > div .section:first-of-type div > p {
@@ -44,6 +45,8 @@ footer > div .section:first-of-type div > p {
     line-height: 1.25rem;
     letter-spacing: 0.17px;
 	max-width: 558px;
+	grid-column: 1/ span 6;
+	grid-row: 2;
 }
 
 footer > div .section:first-of-type div > p:last-of-type {
@@ -55,6 +58,8 @@ footer > div .section:first-of-type div > p:last-of-type {
 	padding: 0 12px;
 	position: relative;
 	margin-top: 32px;
+	grid-column: 1/ span 6;
+	grid-row: 3;
 }
 
 footer > div .section:first-of-type div > p:last-of-type::after {
@@ -93,6 +98,9 @@ footer > div .section:first-of-type ul {
     min-height: 100%;
 	list-style: none;
 	margin: 24px 0 42px;
+	grid-column: 7/ span 6;
+	grid-row: 1/ span 3;
+	align-self: center;
 }
 
 footer > div .section:first-of-type ul picture {
@@ -370,6 +378,7 @@ footer > div .section:nth-of-type(3) > div > p:nth-of-type(6) a {
 		padding-left: 0;
 		justify-content: flex-start;
 		gap: 46px;
+		width: 100%;
 	}
 
 	/* footer navigation columns */	
