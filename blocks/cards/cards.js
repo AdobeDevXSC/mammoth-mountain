@@ -24,22 +24,22 @@ export default async function decorate(block) {
 	cardData.forEach((event) => {
 		const createdCard = document.createElement('li');
 		createdCard.innerHTML = `
-		<a href="${event.url}" aria-label="${event['anchor-text']}"}">
-			<div class="cards-card-body">
-				<span>
-					<p>${event.dates}</p>
-				</span>
-				<h5>${event.title}
-					<span class="card-arrow">
-                		<img class="icon" src="/icons/chevron-right.svg" />
-              		</span>
-				</h5>
-			</div>
-		</a>
+			<a href="${event.url}" aria-label="${event.title}">
+				<div class="cards-card-body">
+					<span>
+						<p>${event.dates}</p>
+					</span>
+					<h5>
+						${event.title}
+						<span class="card-arrow">
+							<img class="icon" src="/icons/chevron-right.svg" />
+						</span>
+					</h5>
+				</div>
+			</a>
 		`;
 		ul.append(createdCard);
 	});
-
   } else {
     [...block.children].forEach((row) => {
       const anchor = document.createElement('a');

@@ -1,3 +1,7 @@
+main .section.countdown-container {
+	overflow: hidden;
+}
+
 main .section.countdown-container .countdown-wrapper {
 	position: relative;
 	padding-left: 324px;
