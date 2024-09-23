@@ -17,7 +17,7 @@ export default async function decorate(block) {
       videoSrc.href = videoSrc.text;
     }
 
-    makeVideo(block.querySelector('div'), videoSrc.href);
+    makeVideo(block.querySelector('div'), videoSrc.href, true);
     videoSrc.remove();
   }
 }

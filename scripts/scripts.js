@@ -292,8 +292,8 @@ function aggregateTabSectionsIntoComponents(main) {
   });
 }
 
-export function makeVideo(element, href) {
-  element.innerHTML = `<video loop muted playsInline>
+export function makeVideo(element, href, autoplay) {
+  element.innerHTML = `<video loop muted playsInline ${!autoplay ? 'controls' : null}>
     <source data-src="${href}" type="video/mp4" />
   </video>`;
 
@@ -304,9 +304,9 @@ export function makeVideo(element, href) {
   video.load();
 
   video.addEventListener('loadeddata', () => {
-    video.setAttribute('autoplay', true);
-    video.setAttribute('data-loaded', true);
-    video.play();
+	video.setAttribute('data-loaded', true);
+	autoplay ? video.setAttribute('autoplay', true) : null;
+	autoplay ? video.play() : null;
   });
 }
 

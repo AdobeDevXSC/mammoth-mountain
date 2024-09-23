@@ -197,7 +197,7 @@ main .section.cards-container {
     opacity: 1;
 	z-index: 1;
 	border: none;
-	position: absolute;
+	/* position: absolute; */
 	max-height: 520px;
   }
 
@@ -241,9 +241,9 @@ main .section.cards-container {
 }
 
 @media (width <= 767px) {
-	.cards.editorial ul {
+	/* .cards.editorial ul {
 		display: none;
-	}
+	} */
 }
   
 /* black mammoth logo tag in middle image */
@@ -456,7 +456,6 @@ main .section.cards-container {
 		font-size: 1.25rem;
 		line-height: 1.25rem;
 		letter-spacing: 0.15px;
-		text-transform: uppercase;
 	}
 
 	.cards.calendar .cards-card-body h5 span {

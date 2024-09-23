@@ -1,8 +1,10 @@
 import { createOptimizedPicture } from '../../scripts/aem.js';
+import { makeVideo } from '../../scripts/scripts.js';
 
 export default async function decorate(block) {
   const isIcon = block.classList.contains('icon');
   const isCalendar = block.classList.contains('calendar');
+  const isEditorial = block.classList.contains('editorial');
 
   // function for adding spreadsheet json source
   async function fetchJson(link) {
@@ -51,6 +53,27 @@ export default async function decorate(block) {
           const linkURL = div.querySelector('a').innerHTML;
           anchor.href = linkURL;
           div.className = 'cards-hide-markdown';
+		} else if(div.children.length === 1 && isEditorial && div.querySelector('a')){
+			const videoSrc = div.querySelector('a');
+			console.log('video', videoSrc);
+			const videoDiv = videoSrc.closest('div');
+
+			makeVideo(videoDiv, videoSrc.href);
+
+
+			const videoButton = document.createElement('button');
+			
+			let togglePlayVideo  = (e) => {
+				const video = block.querySelector('video');
+				video.play();
+			}
+			videoButton.onclick = togglePlayVideo
+
+			videoDiv.classList.add('video-wrapper');
+			
+			videoDiv.append(videoButton)
+			videoSrc.remove();
+
         } else if (div.children.length === 1 && div.querySelector('picture')) {
           div.className = 'cards-card-image';
         } else if (div.children.length === 1 && div.querySelector('span')) {

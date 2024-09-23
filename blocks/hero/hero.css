@@ -26,11 +26,12 @@ main .hero-container {
 }
 
 .hero.winter::before {
-	background: var(--winter-gradient);
+	background: var(--old-winter-gradient);
 }
 
-.hero.summer::before {
-	background: var(--summer-gradient);
+.hero.summer::before,
+.hero.fall::before {
+	background: var(--hero-gradient);
 }
 
 .hero.video video {
