@@ -1,23 +1,12 @@
 .section.vertical-scroll-container {
 	position: relative;
-	padding-bottom: 0;
-}
-
-.section.vertical-scroll-container.fixed {
-	border: dashed 2px lime;
-	top: 0;
-	/* height: 100vh; */
+	padding: 0;
 	width: 100%;
 	max-width: 100%;
 }
 
-.section.vertical-scroll-container.unfix {
-
-}
-
 .section > div.vertical-scroll-wrapper {
 	max-width: unset;
-	border: solid 2px purple;
 	order: 0;
     place-self: auto;
     grid-area: auto;
@@ -37,33 +26,52 @@
 }
 
 .vertical-scroll > div:first-of-type {
-	translate: none;
-	rotate: none;
-	scale: none;
-	left: 389px;
-	top: 0.390625px;
-	margin: 0px;
-	max-width: 828px;
-	width: 828px;
-	max-height: 1074px;
-	height: 1074px;
-	padding: 0px;
-	box-sizing: border-box;
-	transform: translate(0px, 0px);
-	border: solid 2px lime;
+    translate: none;
+    rotate: none;
+    scale: none;
+    inset: 0px auto auto 0px;
+    margin: 0 0 0 389px;
+    max-width: 827.555px;
+    width: 827.555px;
+    max-height: 1074px;
+    height: 1074px;
+    padding: 0px;
+    transform: translate(0px, 0px);
 	position: relative;
 }
 
 .section.vertical-scroll-container.fixed .vertical-scroll > div:first-of-type {
+	translate: none;
+    rotate: none;
+    scale: none;
+    left: 389px;
+    top: 0.390625px;
+    margin: 0px;
+    max-width: 828px;
+    width: 828px;
+    box-sizing: border-box;
+    transform: translate(0px, 0px);
 	position: fixed;
 }
 
+.section.vertical-scroll-container.unfix {
+	overflow: hidden;
+}
+
 .section.vertical-scroll-container.unfix .vertical-scroll > div:first-of-type {
+	translate: none;
+    rotate: none;
+    scale: none;
+    inset: 0px auto auto 0px;
+    margin: 0 0 0 389px;
+    max-width: 827.555px;
+    width: 827.555px;
+    max-height: 1074px;
+    height: 1074px;
+    padding: 0px;
 	position: relative;
 	transform: translate(0px, 3580px);
 }
-
-
 
 .image-block-wrapper {
 	position: absolute;
@@ -71,8 +79,7 @@
 	left: 0;
 	width: 100%;
 	height: 100%;
-	overflow-y: hidden;
-	overflow-x: visible;
+	overflow: visible;
 }
 
 .image-block-wrapper > picture > img {

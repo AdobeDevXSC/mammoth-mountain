@@ -49,48 +49,17 @@ export default function decorate(block) {
 	}
 
 
-// JS for timeline animation
-// var items = document.querySelectorAll(".timeline-item");
-
-// function isElementInViewport(el) {
-//     var rect = el.getBoundingClientRect();
-//     return (
-//         rect.top >= 0 &&
-//         rect.left >= 0 &&
-//         rect.bottom <=
-//             (window.innerHeight || document.documentElement.clientHeight) &&
-//         rect.right <=
-//             (window.innerWidth || document.documentElement.clientWidth)
-//     );
-// }
-
-// function callbackFunc() {
-//     for (var i = 0; i < items.length; i++) {
-//         if (isElementInViewport(items[i])) {
-//             items[i].classList.add("in-view");
-//         }
-//     }
-// }
-
-// window.addEventListener("load", callbackFunc);
-// window.addEventListener("scroll", callbackFunc);
-
-
-
-	function isElementInViewport(el) {
-		var rect = el.getBoundingClientRect();
-		return (
-			rect.top >= 0 &&
-			rect.left >= 0 &&
-			rect.bottom <=
-				(window.innerHeight || document.documentElement.clientHeight) &&
-			rect.right <=
-				(window.innerWidth || document.documentElement.clientWidth)
-		);
-	}
-
-
-
+	// function isElementInViewport(el) {
+	// 	var rect = el.getBoundingClientRect();
+	// 	return (
+	// 		rect.top >= 0 &&
+	// 		rect.left >= 0 &&
+	// 		rect.bottom <=
+	// 			(window.innerHeight || document.documentElement.clientHeight) &&
+	// 		rect.right <=
+	// 			(window.innerWidth || document.documentElement.clientWidth)
+	// 	);
+	// }
 	
 	function callbackFunc() {
 
@@ -104,21 +73,30 @@ export default function decorate(block) {
 			blockContainer.classList.remove('fixed');
 		}
 
-		if(getBlockPos(blockContainer).bottom < 500) {
+		if(getBlockPos(blockContainer).bottom < 653) {
 			blockContainer.classList.remove('fixed');
 			blockContainer.classList.add('unfix');
 		}
 
-		// if(getBlockPos(blockContainer).bottom > 500) {
-		// 	blockContainer.classList.remove('unfix');
-		// }
+		if(getBlockPos(blockContainer).top <= 0 && getBlockPos(blockContainer).top >= -3955) {
+			console.log("do some stuff")
 
-		console.log('block container', getBlockPos(blockContainer))
-		console.log("text-wrapper", getBlockPos(textBlockWrapper).top)
 
-		if(getBlockPos(textBlockWrapper) <= 210){
+
+
+			// opacity
+			// const element = document.querySelector('.your-element'); // Replace with your element
+			// const scrollTop = window.screenY || document.documentElement.scrollTop;
+			// const maxScroll = 500; // Max scroll distance for full opacity change
+			
+			// let opacity = 1 - (scrollTop / maxScroll);
+			// if (opacity < 0) opacity = 0; // Keep opacity within bounds
+			
+			// element.style.opacity = opacity;
 
 		}
+
+		console.log('block container', getBlockPos(blockContainer))
 	}
 
 	window.addEventListener("load", callbackFunc);

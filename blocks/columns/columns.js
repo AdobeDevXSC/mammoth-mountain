@@ -26,14 +26,6 @@ export default function decorate(block) {
       const pic = col.querySelector('picture');
 	  const linkedPic = col.querySelector('a > picture');
 
-	  if (pic) {
-        const picWrapper = pic.closest('div');
-        if (picWrapper && picWrapper.children.length === 1) {
-          // picture is only content in column
-          picWrapper.classList.add('columns-img-col');
-        }
-      }
-
 	  if (linkedPic) {
         const linkedPicWrapper = pic.closest('div');
 		linkedPicWrapper.className = "linked-image-wrapper"

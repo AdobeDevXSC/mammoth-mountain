@@ -199,11 +199,14 @@ main .section.with-video.columns-container .columns-wrapper {
 }
 
 
+
+
 /* offset columns */
 /* dark background block and section heading */
 .offset.section.columns-container {
 	position: relative;
-	border: dashed 3px orange;
+	padding-top: 120px;
+	padding-bottom: 172px;
 }
 
 .offset.section.columns-container::before {
@@ -211,26 +214,16 @@ main .section.with-video.columns-container .columns-wrapper {
 	display: block;
 	position: absolute;
 	left: 0;
-	top: 0;
+	top: -150px;
 	height: 542px;
 	width: 100%;
 	background-color: var(--dark-color);
-	z-index: 1;
+	z-index: -1;
 }
 
-main .offset.section.columns-container .default-content-wrapper {
-	height: 422px;
-	padding-bottom: 56px;
-	display: grid;
-	grid-template-columns: repeat(2, 1fr);
-	gap: 48px;	
-	z-index: 3;
-	max-width: 1200px;
-}
-
-main .section.columns-container h2 {
+main .section.columns-container .columns.offset h2 {
 	color: var(--light-color);
-	margin: 0;
+	margin: 88px 0 0 0;
 	font-size: 4.5rem;
     line-height: 4rem;
     letter-spacing: normal;
@@ -238,10 +231,6 @@ main .section.columns-container h2 {
 	grid-column: 2/ span 1;
 	align-self: flex-end;
 	z-index: 3;
-}
-
-.columns.offset {
-
 }
 
 /* default image styles */
@@ -253,6 +242,12 @@ main .section.columns-container h2 {
 	display: block;
 }
 
+.columns.offset > div:first-of-type > div:first-of-type picture img,
+.columns.offset > div:nth-of-type(2) > div:first-of-type picture img {
+	aspect-ratio: 3 / 4;
+	max-height: 384px;
+}
+
 /* offsets */
 .columns.offset > div {
 	display: flex;
@@ -261,51 +256,48 @@ main .section.columns-container h2 {
 	margin-bottom: 48px;
 	position: relative;
 	z-index: 100;
-	border: solid 2px lime;
 }
 
 .columns.offset > div:last-of-type {
 	margin-bottom: 0;
 }
 
-/* .columns.offset > div:first-of-type > div:first-of-type {
-	position: absolute;
-	top: -310px;
-	left: 0;
-	width: 576px;
-} */
-
 .columns.offset > div:nth-of-type(2) {
 	z-index: 1;
 }
 
+.columns.offset > div:nth-of-type(2) > div:last-of-type {
+	margin-top: -110px;
+}
+
+.columns.offset > div:last-of-type > div:last-of-type {
+	margin-top: -190px;
+}
+
+/* crown logo */
 .columns.offset > div:first-of-type > div:first-of-type::after {
 	content: '';
 	width: 140px;
 	height: 140px;
 	display: block;
 	position: absolute;
-	/* left: 20px;
-	top: -185px; */
+	left: 18px;
+	top: -230px;
 	background: url(https://main--mammoth-mountain--adobedevxsc.hlx.live/images/whitemammothlogo.png);
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: contain;
 	z-index: 30;
-	border: solid 2px orange;
 }
 
-.columns.offset > div:nth-of-type(2n) > div:first-of-type {
-	margin-top: 125px; 
-}
-
-.columns.offset > div:last-of-type > div:nth-of-type(2n) {
-	margin-top: -125px;
-}
 
 /* image link styles */
 .columns.offset > div .linked-image-wrapper {
 	position: relative;
+}
+
+.columns.offset > div .linked-image-wrapper:hover {
+	cursor: pointer;
 }
 
 .columns.offset > div .linked-image-wrapper p {
@@ -314,6 +306,7 @@ main .section.columns-container h2 {
 }
 
 .columns.offset > div .linked-image-wrapper p::before {
+	content: "";
 	background-color: var(--dark-color);
     opacity: 0.2;
 	width: 100%;
@@ -344,10 +337,7 @@ main .section.columns-container h2 {
     letter-spacing: normal;
 	bottom: 0;
     margin: 16px 30px;
-}
-
-.columns.offset > div .linked-image-wrapper h4:hover {
-	cursor: pointer;
+	z-index: 5;
 }
 
 .columns.offset > div .linked-image-wrapper h4:hover {
@@ -366,10 +356,6 @@ main .section.columns-container h2 {
 	background: url(../../icons/chevron-right.svg);
 	background-repeat: no-repeat;
 	filter: invert(100%) sepia(99%) saturate(0%) hue-rotate(25deg) brightness(103%) contrast(101%);
-}
-
-.columns.offset > div .linked-image-wrapper:first-of-type p a picture img {
-    aspect-ratio: 4 / 3;
 }
 
 /* cta styles */
