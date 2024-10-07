@@ -12,7 +12,7 @@ export default function decorate(block) {
 		videoSrc.href = videoSrc.text;
 		}
 
-		makeVideo(videoSrc.closest('div'), videoSrc.href);
+		makeVideo(videoSrc.closest('div'), videoSrc.href, true);
 		videoSrc.remove();
 
 		const video = block.querySelector('video')

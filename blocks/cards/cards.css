@@ -179,13 +179,15 @@ main .section.cards-container {
     top: 21px;
   }
 
-  .cards > ul > li img {
+  .editorial.cards > ul > li img,
+  .editorial.cards > ul > li video {
 	width: 100%;
 	aspect-ratio: unset;
     z-index: 1;
 	object-fit: cover;
 	display: block;
 	height: 520px;
+	min-height: 520px;
   }
 
   .cards.editorial > ul > li {
@@ -205,21 +207,21 @@ main .section.cards-container {
 	max-height: 520px;
   }
 
-  .cards.cards.editorial ul li:first-of-type {
+  .cards.editorial ul li:first-of-type {
 	top: 0;
   }
 
-  .cards.cards.editorial ul li:nth-of-type(2) {
+  .cards.editorial ul li:nth-of-type(2) {
 	top: 50%;
 	transform: translateY(-50%); 
   }
 
-  .cards.cards.editorial ul li:last-of-type {
+  .cards.editorial ul li:last-of-type {
 	bottom: 0;
   }
 
   @media (width > 768px) {
-	.cards.cards.editorial ul li {
+	.cards.editorial ul li {
 		position: absolute;
 		width: 25%;
 		height: unset;

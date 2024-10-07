@@ -201,11 +201,12 @@ main .section.with-video.columns-container .columns-wrapper {
 
 /* offset columns */
 /* dark background block and section heading */
-main .section.columns-container {
+.offset.section.columns-container {
 	position: relative;
+	border: dashed 3px orange;
 }
 
-.section.columns-container .default-content-wrapper::before {
+.offset.section.columns-container::before {
 	content: '';
 	display: block;
 	position: absolute;
@@ -217,7 +218,7 @@ main .section.columns-container {
 	z-index: 1;
 }
 
-main .section.columns-container .default-content-wrapper {
+main .offset.section.columns-container .default-content-wrapper {
 	height: 422px;
 	padding-bottom: 56px;
 	display: grid;
@@ -227,7 +228,7 @@ main .section.columns-container .default-content-wrapper {
 	max-width: 1200px;
 }
 
-main .section.columns-container .default-content-wrapper h2 {
+main .section.columns-container h2 {
 	color: var(--light-color);
 	margin: 0;
 	font-size: 4.5rem;
@@ -240,7 +241,7 @@ main .section.columns-container .default-content-wrapper h2 {
 }
 
 .columns.offset {
-	margin-bottom: 75px;
+
 }
 
 /* default image styles */
@@ -260,18 +261,19 @@ main .section.columns-container .default-content-wrapper h2 {
 	margin-bottom: 48px;
 	position: relative;
 	z-index: 100;
+	border: solid 2px lime;
 }
 
 .columns.offset > div:last-of-type {
 	margin-bottom: 0;
 }
 
-.columns.offset > div:first-of-type > div:first-of-type {
+/* .columns.offset > div:first-of-type > div:first-of-type {
 	position: absolute;
 	top: -310px;
 	left: 0;
 	width: 576px;
-}
+} */
 
 .columns.offset > div:nth-of-type(2) {
 	z-index: 1;
@@ -283,13 +285,14 @@ main .section.columns-container .default-content-wrapper h2 {
 	height: 140px;
 	display: block;
 	position: absolute;
-	left: 20px;
-	top: -185px;
+	/* left: 20px;
+	top: -185px; */
 	background: url(https://main--mammoth-mountain--adobedevxsc.hlx.live/images/whitemammothlogo.png);
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: contain;
 	z-index: 30;
+	border: solid 2px orange;
 }
 
 .columns.offset > div:nth-of-type(2n) > div:first-of-type {
