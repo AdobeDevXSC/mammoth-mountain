@@ -26,7 +26,7 @@ export default function decorate(block) {
 	// update class name for individual text slides
 	const textIcons = block.querySelectorAll('p > picture');
 	textIcons.forEach((icon, index) => {
-		icon.closest('div').classList.add(`text-block-${index}`);
+		icon.closest('div').classList.add(`text-block-${index + 1}`);
 		icon.closest('div').classList.add('text-block');
 	})
 
@@ -62,37 +62,75 @@ export default function decorate(block) {
 	// }
 	
 	function callbackFunc() {
-
-		// sets block position to fixed
-		if(getBlockPos(blockContainer).top < 0){
-			blockContainer.classList.add('fixed');
-			blockContainer.classList.remove('unfix');
-		}
-
+		// removes fixed block position when doc is scrolled above block
 		if(getBlockPos(blockContainer).top > 0) {
 			blockContainer.classList.remove('fixed');
 		}
 
-		if(getBlockPos(blockContainer).bottom < 653) {
+		// unfixes the block position when doc is scrolled below the block
+		if(getBlockPos(blockContainer).bottom < 933) {
 			blockContainer.classList.remove('fixed');
 			blockContainer.classList.add('unfix');
+			textBlockWrapper.style.bottom = '153px';
+			textBlockWrapper.style.top = 'unset';
+			console.log('unfix')
 		}
 
-		if(getBlockPos(blockContainer).top <= 0 && getBlockPos(blockContainer).top >= -3955) {
-			console.log("do some stuff")
+		// fixes block and transition time-blockspace
+		if(getBlockPos(blockContainer).top <= 0 && getBlockPos(blockContainer).bottom >= 945) {
+			blockContainer.classList.add('fixed');
+			blockContainer.classList.remove('unfix');
 
+			const firstText = block.querySelector('.text-block-1');
+			const secondText = block.querySelector('.text-block-2');
+			const thirdText = block.querySelector('.text-block-3');
 
+			// change text block posiiton
+			// calculate change in scroll position
+			const scrollTop = window.scrollY || document.documentElement.scrollTop;
 
+			// text opacity
+			const opacityScroll = (el) => {
+				const maxOpacityScroll = 10; // Max scroll distance for full opacity change
+				let opacity = 1 - (scrollTop / maxOpacityScroll);
+				if (opacity < 0) opacity = 0; // Keep opacity within bounds
+				el.style.opacity = opacity;
+			}
 
-			// opacity
-			// const element = document.querySelector('.your-element'); // Replace with your element
-			// const scrollTop = window.screenY || document.documentElement.scrollTop;
-			// const maxScroll = 500; // Max scroll distance for full opacity change
+			// Define the scroll range (adjust these values based on your content)
+			const minScroll = 4750;  // The scroll position where movement starts
+			const maxScroll = 8000;  // The scroll position where movement ends
+		
+			// Calculate the new top position between 200px and 327px
+			let textTopPos = 200 + ((scrollTop - minScroll) / (maxScroll - minScroll)) * (327 - 200);
+
+			// Clamp the value between 200px and 327px
+			if(textTopPos < 200) textTopPos = 200;
+			if(textTopPos > 327) textTopPos = 327;
 			
-			// let opacity = 1 - (scrollTop / maxScroll);
-			// if (opacity < 0) opacity = 0; // Keep opacity within bounds
+			textBlockWrapper.style.top = `${textTopPos}px`;
+
+			console.log('calc top', textTopPos)
 			
-			// element.style.opacity = opacity;
+			// start first transition
+			if(textTopPos > 240 && textTopPos < 245) {
+				console.log("change first slide")
+				opacityScroll(firstText);
+			}
+
+			if(textTopPos > 300 && textTopPos < 305) {
+				console.log("change second slide")
+				opacityScroll(secondText);
+			}
+
+			if(textTopPos > 322 && textTopPos <= 327) {
+				console.log("change third slide")
+				opacityScroll(thirdText);
+			}
+
+
+
+			
 
 		}
 

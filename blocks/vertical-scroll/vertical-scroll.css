@@ -52,6 +52,7 @@
     box-sizing: border-box;
     transform: translate(0px, 0px);
 	position: fixed;
+	border: solid 2px lime;
 }
 
 .section.vertical-scroll-container.unfix {
@@ -80,6 +81,7 @@
 	width: 100%;
 	height: 100%;
 	overflow: visible;
+	border: dashed 3px fuchsia;
 }
 
 .image-block-wrapper > picture > img {
@@ -87,7 +89,6 @@
 	display: block;
 	width: 100%;
 	height: 100%;
-
 }
 
 /* images */
@@ -118,11 +119,9 @@
 
 
 
-
 /* text blocks */
 /* typography */
 .vertical-scroll .text-block-wrapper {
-	border: 3px dashed blue;
 	position: absolute;
     z-index: 10;
     height: 447px;
@@ -139,6 +138,10 @@
 	padding: 16px;
 	display: grid;
 	grid-template-columns: repeat(6, 1fr);
+	position: absolute;
+	top: 0;
+	left: 0;
+	transition: opacity 300ms cubic-bezier(0.240, 0.260, 0.070, 0.720);
 }
 
 .vertical-scroll .text-block-wrapper > div > h2 {
@@ -216,25 +219,25 @@
 }
 
 .text-block-wrapper div:first-of-type {
-	border: solid 2px purple;
+	/* border: solid 2px purple; */
 	z-index: 6;
 	opacity: 1;
 }
 
-.vertical-scroll .text-block-wrapper div:nth-of-type(2) {
-	border: solid 2px orange;
+.text-block-wrapper div:nth-of-type(2) {
+	/* border: solid 2px orange; */
 	z-index: 5;
-	opacity: 0;
+	opacity: 1;
 }
 
-.vertical-scroll .text-block-wrapper div:nth-of-type(3) {
-	border: solid 2px lime;
+.text-block-wrapper div:nth-of-type(3) {
+	/* border: solid 2px lime; */
 	z-index: 4;
-	opacity: 0;
+	opacity: 1;
 }
 
-.vertical-scroll .text-block-wrapper div:nth-of-type(4) {
-	border: solid 2px fuchsia;
+.text-block-wrapper div:nth-of-type(4) {
+	/* border: solid 2px fuchsia; */
 	z-index: 3;
-	opacity: 0;
+	opacity: 1;
 }
