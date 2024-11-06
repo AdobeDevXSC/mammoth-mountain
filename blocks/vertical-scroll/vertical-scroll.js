@@ -34,6 +34,7 @@ export default function decorate(block) {
 	const pics = block.querySelectorAll('div > picture');
 	pics.forEach((pic, index) => {
 		pic.classList.add(`image-${index + 1}`);
+		pic.classList.add(`image-block`);
 	});
 
 	function getBlockPos(el){
@@ -57,9 +58,7 @@ export default function decorate(block) {
 			textBlockWrapper.style.bottom = '153px';
 			textBlockWrapper.style.top = 'unset';
 		}
-		
-		let lastScrollTop = 0;
-		
+				
 		// fixes block and transition time-blockspace
 		if(getBlockPos(blockContainer).top <= 0 && getBlockPos(blockContainer).bottom >= 945) {
 			blockContainer.classList.add('fixed');
@@ -67,8 +66,6 @@ export default function decorate(block) {
 
 			// calculate change in scroll position
 			let scrollTop = window.scrollY || document.documentElement.scrollTop;
-
-			let scrollDown = scrollTop > lastScrollTop;
 	
 			// change text block position on scroll
 			// Define the scroll range
@@ -80,100 +77,72 @@ export default function decorate(block) {
 
 			// Clamp the value between 200px and 327px
 			textTopPos = Math.min(Math.max(textTopPos, 200), 327);
-			
 			textBlockWrapper.style.top = `${textTopPos}px`;
 
 			
 			// opacity adjustment on scroll functions
-			const opacityScrollDown = (el, downTrigger, opacityMax) => {
+			const opacityScrollDown = (el, triggerPoint, opacityMax) => {
 				let opacity;
 				let zIndex;
 
 				// Check if scrolling down and past the down trigger point
-				if (textTopPos > downTrigger) {
-					opacity = 1 - ((textTopPos - downTrigger) / opacityMax);
+				if (textTopPos > triggerPoint) {
+					opacity = 1 - ((textTopPos - triggerPoint) / opacityMax);
 					if (opacity < 0) {
 						opacity = 0; // Ensure opacity does not go below 0
-						zIndex = -1;
+						// zIndex = -1;
 					}
 				}
-
+				
+				console.log(opacity)
 				el.style.opacity = opacity;
-				el.style.zIndex = zIndex;
+				// el.style.zIndex = zIndex;
 			};
 
-			const opacityScrollUp = (el, upTrigger, opacityMax) => {
+			const opacityScrollUp = (el, triggerPoint, opacityMax) => {
 				let opacity;
 				let zIndex;
 
 				// Check if scrolling up and below the up trigger point
-				if (textTopPos < upTrigger) {
-					opacity = ((upTrigger - textTopPos) / opacityMax);
+				if (textTopPos < triggerPoint) {
+					opacity = ((triggerPoint - textTopPos) / opacityMax);
 					if (opacity > 1) opacity = 1; // Ensure opacity does not exceed 1
-					if(opacity > 0.2) zIndex = 6;
+					// if(opacity > 0.2) zIndex = 6;
 				}
 
+				console.log(opacity)
 				el.style.opacity = opacity;
 			}
 
-			const maxOpacityScrollText = 10;
+			const maxOpacityScrollText = 5;
 			const maxOpacityScrollImage = 0;
 
-			const loopEls = (parentEl, triggerPoints) => {
+			const loopEls = (parentEl, triggerPoints, opacityMax) => {
 				for (let i = 0; i < 3; i++) {
 					let el = parentEl[i];
 					let triggerPoint = triggerPoints[i];
 	
-					if (textTopPos > triggerPoint && scrollDown) {
-						opacityScrollDown(el, triggerPoint, maxOpacityScrollText)
+					if (textTopPos > triggerPoint) {
+						opacityScrollDown(el, triggerPoint, opacityMax)
 					} else if (textTopPos < triggerPoint) {
-						console.log("scrolling up", scrollDown, triggerPoint, textTopPos)
-						opacityScrollUp(el, triggerPoint, maxOpacityScrollText)
+						opacityScrollUp(el, triggerPoint, opacityMax)
 					}
-					
-					// Update last scroll position
-					lastScrollTop = textTopPos <= 0 ? 0 : textTopPos;
 				};
 			}
 
-
+			// text elements
 			const allTextBlocks = Array.from(block.querySelectorAll(".text-block"));
-			const textTriggers = [ 245, 295, 325 ]
+			const textTriggers = [240, 300, 325]
+
+			// image elements
+			const allImgBlocks = Array.from(block.querySelectorAll(".image-block"));
+			const imageTriggers = [240, 300, 325]
+
 
 			// call looping function for text blocks
-			loopEls(allTextBlocks, textTriggers);
+			loopEls(allTextBlocks, textTriggers, maxOpacityScrollText);
 
 			// call looping function for image blocks
-
-
-
-
-
-
-			// code that works for opacity transitions
-
-			// const firstText = block.querySelector('.text-block-1');
-			// const secondText = block.querySelector('.text-block-2');
-			// const thirdText = block.querySelector('.text-block-3');
-
-			
-			// // start first text transition
-			// if(textTopPos > 240 && textTopPos < 245) {
-			// 	console.log("change first slide")
-			// 	opacityScroll(firstText);
-			// }
-
-			// // start second text transition
-			// if(textTopPos > 300 && textTopPos < 305) {
-			// 	console.log("change second slide")
-			// 	opacityScroll(secondText);
-			// }
-
-			// // start third text transition
-			// if(textTopPos > 322 && textTopPos <= 327) {
-			// 	console.log("change third slide")
-			// 	opacityScroll(thirdText);
-			// }
 		}
 	}
 
