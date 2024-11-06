@@ -128,37 +128,59 @@ export default function decorate(block) {
 				el.style.opacity = opacity;
 				el.style.zIndex = zIndex;
 			}
+
+			const parallaxScroll = (el, triggerPoint) => {
+				const maxTranslate = -150; // Maximum translate value in px
 			
-
-			const maxOpacityScrollText = 5;
-			const maxOpacityScrollImage = 0;
-
-			const loopEls = (parentEl, triggerPoints, opacityMax) => {
+				if (textTopPos > triggerPoint) {
+					// Calculate translateY based on how far past the trigger point the user has scrolled
+					const translateY = ((textTopPos - triggerPoint) / 500) * maxTranslate;
+					
+					// Clamp translateY to maxTranslate so it doesn't exceed the max value
+					el.style.transform = `translateY(${Math.max(translateY, maxTranslate)}px)`;
+				} else {
+					// Reset translateY if above the trigger point
+					el.style.transform = 'translateY(0px)';
+				}
+			};
+			
+			const loopEls = (parentEl, opacityTriggers, transitionTriggers, opacityMax, isImage) => {
 				for (let i = 0; i < 3; i++) {
 					let el = parentEl[i];
-					let triggerPoint = triggerPoints[i];
-	
-					if (textTopPos > triggerPoint && scrollDown) {
-						opacityScrollDown(el, triggerPoint, opacityMax, i)
-					} else if (textTopPos < triggerPoint && !scrollDown) {
-						opacityScrollUp(el, triggerPoint, opacityMax, i)
+					let opacityTriggerPoint = opacityTriggers[i];
+
+					if (textTopPos > opacityTriggerPoint && scrollDown) {
+						opacityScrollDown(el, opacityTriggerPoint, opacityMax, i)
+					} else if (textTopPos < opacityTriggerPoint && !scrollDown) {
+						opacityScrollUp(el, opacityTriggerPoint, opacityMax, i)
 					}
 				};
+
+				if(isImage){
+					for(let i = 0; i < 4; i++){
+						let el = parentEl[i];
+						let transitionStart = transitionTriggers[i];
+						parallaxScroll(el, transitionStart);
+					}
+
+				}
 			}
 
 			// text elements
 			const allTextBlocks = Array.from(block.querySelectorAll(".text-block"));
 			const textTriggers = [240, 300, 322]
+			const maxOpacityScrollText = 5;
+
 
 			// image elements
 			const allImgBlocks = Array.from(block.querySelectorAll(".image-block"));
-			const imageTriggers = [240, 300, 322]
-
+			const imageTransformTriggers = [1, 227, 248, 263]
 
 			// call looping function for text blocks
-			loopEls(allTextBlocks, textTriggers, maxOpacityScrollText);
+			loopEls(allTextBlocks, textTriggers, maxOpacityScrollText, false);
 
 			// call looping function for image blocks
+			loopEls(allImgBlocks, textTriggers, imageTransformTriggers, maxOpacityScrollText, true);
 
 			lastScrollTop = scrollTop;
 		}
