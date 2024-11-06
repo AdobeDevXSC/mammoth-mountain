@@ -44,7 +44,9 @@ export default function decorate(block) {
 		);
 	}
 	
+	let lastScrollTop = 0;
 	function callbackFunc() {
+		
 		// removes fixed block position when doc is scrolled above block
 		if(getBlockPos(blockContainer).top > 0) {
 			blockContainer.classList.remove('fixed');
@@ -79,40 +81,54 @@ export default function decorate(block) {
 			textTopPos = Math.min(Math.max(textTopPos, 200), 327);
 			textBlockWrapper.style.top = `${textTopPos}px`;
 
-			
+			let scrollDown = scrollTop > lastScrollTop;
+
 			// opacity adjustment on scroll functions
-			const opacityScrollDown = (el, triggerPoint, opacityMax) => {
+			const opacityScrollDown = (el, triggerPoint, opacityMax, idx) => {
 				let opacity;
 				let zIndex;
 
 				// Check if scrolling down and past the down trigger point
 				if (textTopPos > triggerPoint) {
 					opacity = 1 - ((textTopPos - triggerPoint) / opacityMax);
+					zIndex = Math.max(-1, 0 - ((textTopPos - triggerPoint) / opacityMax));
 					if (opacity < 0) {
 						opacity = 0; // Ensure opacity does not go below 0
-						// zIndex = -1;
 					}
+					if (zIndex < -1) zIndex = -1; // Clamp zIndex to -1
+				} else {
+					opacity = 1; // Full opacity if not yet at downTrigger
+					zIndex = 6 - idx; // Default zIndex
 				}
 				
-				console.log(opacity)
+				console.log("scroll down", scrollDown, zIndex);
+
 				el.style.opacity = opacity;
-				// el.style.zIndex = zIndex;
+				el.style.zIndex = zIndex;
 			};
 
-			const opacityScrollUp = (el, triggerPoint, opacityMax) => {
+			const opacityScrollUp = (el, triggerPoint, opacityMax, idx) => {
 				let opacity;
 				let zIndex;
 
 				// Check if scrolling up and below the up trigger point
 				if (textTopPos < triggerPoint) {
 					opacity = ((triggerPoint - textTopPos) / opacityMax);
-					if (opacity > 1) opacity = 1; // Ensure opacity does not exceed 1
-					// if(opacity > 0.2) zIndex = 6;
+					zIndex = Math.min(6 - idx, -1 + ((triggerPoint - textTopPos) / opacityMax)); // Scale zIndex back up
+					if (opacity > 1) opacity = 1; // Keep opacity within bounds
+					if (zIndex > 0) zIndex = 6 - idx; // Clamp zIndex to 0
+				// } else {
+				// 	opacity = 0; // No opacity if not yet at triggerPoint
+				// 	zIndex = -1; // Lowest zIndex
+				// }
 				}
+				
+				console.log("scroll up", scrollDown, zIndex);
 
-				console.log(opacity)
 				el.style.opacity = opacity;
+				el.style.zIndex = zIndex;
 			}
+			
 
 			const maxOpacityScrollText = 5;
 			const maxOpacityScrollImage = 0;
@@ -122,27 +138,29 @@ export default function decorate(block) {
 					let el = parentEl[i];
 					let triggerPoint = triggerPoints[i];
 	
-					if (textTopPos > triggerPoint) {
-						opacityScrollDown(el, triggerPoint, opacityMax)
-					} else if (textTopPos < triggerPoint) {
-						opacityScrollUp(el, triggerPoint, opacityMax)
+					if (textTopPos > triggerPoint && scrollDown) {
+						opacityScrollDown(el, triggerPoint, opacityMax, i)
+					} else if (textTopPos < triggerPoint && !scrollDown) {
+						opacityScrollUp(el, triggerPoint, opacityMax, i)
 					}
 				};
 			}
 
 			// text elements
 			const allTextBlocks = Array.from(block.querySelectorAll(".text-block"));
-			const textTriggers = [240, 300, 325]
+			const textTriggers = [240, 300, 322]
 
 			// image elements
 			const allImgBlocks = Array.from(block.querySelectorAll(".image-block"));
-			const imageTriggers = [240, 300, 325]
+			const imageTriggers = [240, 300, 322]
 
 
 			// call looping function for text blocks
 			loopEls(allTextBlocks, textTriggers, maxOpacityScrollText);
 
 			// call looping function for image blocks
+
+			lastScrollTop = scrollTop;
 		}
 	}
 

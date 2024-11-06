@@ -220,24 +220,24 @@
 
 .text-block-wrapper div:first-of-type {
 	border: solid 2px purple;
-	z-index: 6;
+	z-index: 5;
 	opacity: 1;
 }
 
 .text-block-wrapper div:nth-of-type(2) {
 	border: solid 2px orange;
-	z-index: 5;
+	z-index: 4;
 	opacity: 1;
 }
 
 .text-block-wrapper div:nth-of-type(3) {
 	border: solid 2px lime;
-	z-index: 4;
+	z-index: 3;
 	opacity: 1;
 }
 
 .text-block-wrapper div:nth-of-type(4) {
 	border: solid 2px fuchsia;
-	z-index: 3;
+	z-index: 2;
 	opacity: 1;
 }
