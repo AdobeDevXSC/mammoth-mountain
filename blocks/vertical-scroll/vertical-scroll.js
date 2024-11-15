@@ -134,7 +134,7 @@ export default function decorate(block) {
 			
 				if (textTopPos > triggerPoint) {
 					// Calculate translateY based on how far past the trigger point the user has scrolled
-					const translateY = ((textTopPos - triggerPoint) / 500) * maxTranslate;
+					const translateY = ((textTopPos - triggerPoint) / 350) * maxTranslate;
 					
 					// Clamp translateY to maxTranslate so it doesn't exceed the max value
 					el.style.transform = `translateY(${Math.max(translateY, maxTranslate)}px)`;
@@ -174,7 +174,8 @@ export default function decorate(block) {
 
 			// image elements
 			const allImgBlocks = Array.from(block.querySelectorAll(".image-block"));
-			const imageTransformTriggers = [1, 227, 248, 263]
+			const imageTransformTriggers = [0, 227, 248, 263]
+			const maxOpacityImageText = 5;
 
 			// call looping function for text blocks
 			loopEls(allTextBlocks, textTriggers, maxOpacityScrollText, false);

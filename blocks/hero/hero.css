@@ -64,6 +64,7 @@ main .hero-container {
 	letter-spacing: normal;
 	margin: 0;
 	color: var(--light-color);
+	font-weight: 600;
 }
 
 .hero p {
@@ -85,6 +86,7 @@ main .hero-container {
         font-size: 5.5rem;
         line-height: 4.9375rem;
         letter-spacing: -1.5px;
+		max-width: 450px;
   	}
 
 	.hero p:not(.button-container) {
@@ -105,10 +107,8 @@ main .hero-container {
 }
 
 @media (width <= 768px) {
-	main .hero-container > div {
-		height: 584px;
-	}
 
+	main .hero-container > div,	
 	.hero {
 		height: 584px;
 	}
@@ -120,6 +120,11 @@ main .hero-container {
 	.hero.video > div:first-of-type {
 		display: none;
 	}
+
+	.hero.video > .hero-cta > div {
+		bottom: 32px;
+		padding: 0 20px;
+  	}
 
 	.hero h1 {
 		font-size: 3.875rem;
@@ -149,6 +154,7 @@ main .hero-container {
 		display: block;
 		object-fit: cover;
 		width: 100%;
+		max-height: 584px;
 	}
 
 	/* summer */
