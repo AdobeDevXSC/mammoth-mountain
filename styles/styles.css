@@ -42,7 +42,7 @@
   --heading-font-size-xs: 18px;
 
   /* nav height */
-  --nav-height: 64px;
+  --nav-height: 80px;
 }
 
 @font-face {
@@ -78,7 +78,7 @@ body.appear {
 }
 
 header {
-  /* height: var(--nav-height); */
+  height: var(--nav-height);
 }
 
 h1, h2, h3,
@@ -269,6 +269,7 @@ main .section.highlight {
   background-color: var(--light-color);
 }
 
+
 /* Experimentation Widget Styling */
 .hlx-preview-overlay .hlx-badge {
 	padding: 1rem 2rem;
@@ -277,5 +278,5 @@ main .section.highlight {
   }
   
 .hlx-preview-overlay .hlx-badge .hlx-popup * {
-font-size: 14px;
+	font-size: 14px;
 }
