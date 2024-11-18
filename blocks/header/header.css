@@ -15,9 +15,10 @@ header .nav-wrapper {
   }
   
   header nav#nav[aria-expanded="true"] {
-	  background-color: var(--mammoth-blue);
+	  background-color: var(--mammoth-blue) !important;
 	  overflow-y: auto;
 	  min-height: 100vh;
+	  transition: 0.1s;
   }
   
   header nav#nav p {
