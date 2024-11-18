@@ -31,10 +31,7 @@ import {
   };
 
 const LCP_BLOCKS = [
-	'hero',
-	'cta-grid',
-	'fullwidth-image',
-	'mega-menu'
+	'hero'
 ]; // add your LCP blocks to the list
 
 const AUDIENCES = {
@@ -76,6 +73,37 @@ const AUDIENCES = {
 	},
   };
 
+
+/**
+ * Returns the current timestamp used for scheduling content.
+ */
+export function getTimestamp() {
+	if ((window.location.hostname === 'localhost' || window.location.hostname.endsWith('.hlx.page')) && window.sessionStorage.getItem('preview-date')) {
+	  return Date.parse(window.sessionStorage.getItem('preview-date'));
+	}
+	return Date.now();
+  }
+  
+  /**
+   * Determines whether scheduled content with a given date string should be displayed.
+   */
+  export function shouldBeDisplayed(date) {
+	const now = getTimestamp();
+  
+	const split = date.split('-');
+	if (split.length === 2) {
+	  const from = Date.parse(split[0].trim());
+	  const to = Date.parse(split[1].trim());
+	  return now >= from && now <= to;
+	}
+	if (date !== '') {
+	  const from = Date.parse(date.trim());
+	  return now >= from;
+	}
+	return false;
+  }
+
+
   /**
  * Determine if we are serving content for the block-library, if so don't load the header or footer
  * @returns {boolean} True if we are loading block library content
@@ -83,26 +111,65 @@ const AUDIENCES = {
 export function isBlockLibrary() {
 	return window.location.pathname.includes('block-library');
   }
-  
-  /**
-   * @param {*} element
-   * @param {*} href
-   */
-  export function addVideo(element, href) {
+
+/**
+ * @param {*} element
+ * @param {*} href
+ */
+export function addVideo(element, href) {
+	element.innerHTML = `<video loop muted playsInline>
+		<source data-src="${href}" type="video/mp4" />
+	</video>`;
+	const video = element.querySelector('video');
+	const source = element.querySelector('video > source');
+	
+	source.src = source.dataset.src;
+	video.load();
+	video.addEventListener('loadeddata', () => {
+		video.setAttribute('autoplay', true);
+		video.setAttribute('data-loaded', true);
+		video.play();
+	});
+}
+
+export function makeVideo(element, href) {
 	element.innerHTML = `<video loop muted playsInline>
 	  <source data-src="${href}" type="video/mp4" />
 	</video>`;
+  
 	const video = element.querySelector('video');
 	const source = element.querySelector('video > source');
   
 	source.src = source.dataset.src;
 	video.load();
+  
 	video.addEventListener('loadeddata', () => {
 	  video.setAttribute('autoplay', true);
 	  video.setAttribute('data-loaded', true);
 	  video.play();
 	});
   }
+
+
+  /**
+ * Handles external links and PDFs to be opened in a new tab/window
+ * @param {Element} main The main element
+ */
+export function decorateExternalLinks(main) {
+	main.querySelectorAll('a').forEach((a) => {
+	  const href = a.getAttribute('href');
+	  if (href) {
+		const extension = href.split('.').pop().trim();
+		if (!href.startsWith('/')
+		  && !href.startsWith('#')) {
+		  if (href.includes('lenovo.com/content') || (extension === 'pdf')) {
+			a.setAttribute('target', '_blank');
+		  }
+		}
+	  }
+	});
+  }
+
 
   /**
  * Convience method for creating tags in one line of code
@@ -160,6 +227,33 @@ async function loadFonts() {
   }
 }
 
+/**
+ * to add/remove a template, just add/remove it in the list below
+ */
+const TEMPLATE_LIST = [
+];
+
+/**
+ * Run template specific decoration code.
+ * @param {Element} main The container element
+ */
+async function decorateTemplates(main) {
+  try {
+    const template = getMetadata('template');
+    const templates = TEMPLATE_LIST;
+    if (templates.includes(template)) {
+      const mod = await import(`../templates/${template}/${template}.js`);
+      loadCSS(`${window.hlx.codeBasePath}/templates/${template}/${template}.css`);
+      if (mod.default) {
+        await mod.default(main);
+      }
+    }
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.error('Auto Blocking failed', error);
+  }
+}
+
 function autolinkModals(element) {
 	element.addEventListener('click', async (e) => {
 	  const origin = e.target.closest('a');
@@ -196,7 +290,10 @@ export function decorateMain(main) {
   decorateIcons(main);
 //   buildAutoBlocks(main);
   decorateSections(main);
+  scheduleSections(main);
+  scheduleBlocks(main);
   decorateBlocks(main);
+  decorateExternalLinks(main)
 }
 
 /**
@@ -215,6 +312,43 @@ export function addFavIcon(href) {
 	  document.getElementsByTagName('head')[0].appendChild(link);
 	}
   }
+
+/**
+ * Remove scheduled blocks that should not be displayed.
+ */
+function scheduleBlocks(main) {
+	const blocks = main.querySelectorAll('div.section > div > div');
+	blocks.forEach((block) => {
+	  let date;
+	  const rows = block.querySelectorAll(':scope > div');
+	  rows.forEach((row) => {
+		const cols = [...row.children];
+		if (cols.length > 1) {
+		  if (cols[0].textContent.toLowerCase() === 'date') {
+			date = cols[1].textContent;
+			row.remove();
+		  }
+		}
+	  });
+	  if (date && !shouldBeDisplayed(date)) {
+		block.remove();
+	  }
+	});
+  }
+  
+  /**
+   * Remove scheduled sections that should not be displayed.
+   */
+  function scheduleSections(main) {
+	const sections = main.querySelectorAll('div.section');
+	sections.forEach((section) => {
+	  const { date } = section.dataset;
+	  if (date && !shouldBeDisplayed(date)) {
+		section.remove();
+	  }
+	});
+  }
+  
 
   const tabElementMap = {};
 
@@ -292,23 +426,7 @@ function aggregateTabSectionsIntoComponents(main) {
   });
 }
 
-export function makeVideo(element, href, autoplay) {
-  element.innerHTML = `<video loop muted playsInline ${!autoplay ? 'controls' : null}>
-    <source data-src="${href}" type="video/mp4" />
-  </video>`;
 
-  const video = element.querySelector('video');
-  const source = element.querySelector('video > source');
-
-  source.src = source.dataset.src;
-  video.load();
-
-  video.addEventListener('loadeddata', () => {
-	video.setAttribute('data-loaded', true);
-	autoplay ? video.setAttribute('autoplay', true) : null;
-	autoplay ? video.play() : null;
-  });
-}
 
 /**
  * Loads everything needed to get to LCP.
@@ -360,10 +478,22 @@ async function loadEager(doc) {
 
 	const main = doc.querySelector('main');
 	if (main) {
+	  decorateTemplates(main);
 	  decorateMain(main);
+	  aggregateTabSectionsIntoComponents(main);
 	  document.body.classList.add('appear');
 	  await waitForLCP(LCP_BLOCKS);
 	}
+
+	/**
+   * fix UE meta tag
+   */
+	  doc.querySelectorAll('meta').forEach((m) => {
+		const prop = m.getAttribute('property');
+		if (prop && prop.startsWith('urn:adobe')) {
+		  m.setAttribute('content', `aem:${m.getAttribute('content')}`);
+		}
+	  });
   
 	try {
 	  /* if desktop (proxy for fast connection) or fonts already loaded, load fonts.css */
@@ -395,6 +525,36 @@ async function loadLazy(doc) {
   sampleRUM('lazy');
   sampleRUM.observe(main.querySelectorAll('div[data-block-name]'));
   sampleRUM.observe(main.querySelectorAll('picture > img'));
+
+
+  if (window.location.hostname === 'localhost' || window.location.hostname.endsWith('.hlx.page')) {
+
+    // Load scheduling sidekick extension
+    import('./scheduling/scheduling.js');
+  }
+
+await window.hlx.plugins.run('loadLazy', pluginContext);
+
+  // Mark customer as having viewed the page once
+  localStorage.setItem('franklin-visitor-returning', true);
+
+  const context = {
+    getMetadata,
+    toClassName,
+  };
+
+  // eslint-disable-next-line import/no-relative-packages
+  const { initConversionTracking } = await import('../plugins/rum-conversion/src/index.js');
+  await initConversionTracking.call(context, document);
+
+  	// Add below snippet at the end of the lazy phase
+	if ((getMetadata('experiment')
+		|| Object.keys(getAllMetadata('campaign')).length
+		|| Object.keys(getAllMetadata('audience')).length)) {
+		// eslint-disable-next-line import/no-relative-packages
+		const { loadLazy: runLazy } = await import('../plugins/experimentation/src/index.js');
+		await runLazy(document, { audiences: AUDIENCES }, pluginContext);
+	}
 }
 
 /**
@@ -407,10 +567,121 @@ function loadDelayed() {
   // load anything that can be postponed to the latest here
 }
 
-async function loadPage() {
-  await loadEager(document);
-  await loadLazy(document);
-  loadDelayed();
+export function addAnchorLink(elem) {
+	const link = document.createElement('a');
+	link.setAttribute('href', `#${elem.id || ''}`);
+	link.setAttribute('title', `Copy link to "${elem.textContent}" to clipboard`);
+	link.classList.add('anchor-link');
+	link.addEventListener('click', (e) => {
+	  e.preventDefault();
+	  navigator.clipboard.writeText(link.href);
+	  window.location.href = link.href;
+	  e.target.classList.add('anchor-link-copied');
+	  setTimeout(() => e.target.classList.remove('anchor-link-copied'), 1000);
+	});
+	link.innerHTML = elem.innerHTML;
+	elem.innerHTML = '';
+	elem.append(link);
+  }
+
+  export async function fetchJson(href) {
+	const url = new URL(href);
+	try {
+	  const resp = await fetch(
+		url,
+		{
+		  headers: {
+			'Content-Type': 'text/html',
+		  },
+		  method: 'get',
+		  credentials: 'include',
+		},
+	  );
+	  const error = new Error({
+		code: 500,
+		message: 'login error',
+	  });
+	  if (resp.redirected) throw (error);
+  
+	  return resp.json();
+	} catch (error) {
+	  return error;
+	}
+  }
+
+  export async function useGraphQL(query, param) {
+	const configPath = `${window.location.origin}/demo-config.json`;
+	let { data } = await fetchJson(configPath);
+	data = data && data[0];
+	if (!data) {
+	  console.log('config not present'); // eslint-disable-line no-console
+	  return;
+	}
+	const { origin } = window.location;
+  
+	if (origin.includes('.live')) {
+	  data['aem-author'] = data['aem-author'].replace('author', data['hlx.live']);
+	} else if (origin.includes('.page')) {
+	  data['aem-author'] = data['aem-author'].replace('author', data['hlx.page']);
+	}
+	data['aem-author'] = data['aem-author'].replace(/\/+$/, '');
+	const { pathname } = new URL(query);
+	const url = param ? new URL(`${data['aem-author']}${pathname}${param}`) : new URL(`${data['aem-author']}${pathname}`);
+	const options = data['aem-author'].includes('publish')
+	  ? {
+		headers: {
+		  'Content-Type': 'text/html',
+		},
+		method: 'get',
+	  }
+	  : {
+		headers: {
+		  'Content-Type': 'text/html',
+		},
+		method: 'get',
+		credentials: 'include',
+	  };
+	try {
+	  const resp = await fetch(
+		url,
+		options,
+	  );
+  
+	  const error = new Error({
+		code: 500,
+		message: 'login error',
+	  });
+  
+	  if (resp.redirected) throw (error);
+  
+	  const adventures = await resp.json();
+	  const environment = data['aem-author'];
+	  return { adventures, environment }; // eslint-disable-line consistent-return
+	} catch (error) {
+	  console.log(JSON.stringify(error)); // eslint-disable-line no-console
+	}
+  }
+  
+  export function addElement(type, attributes, values = {}) {
+	const element = document.createElement(type);
+  
+	Object.keys(attributes).forEach((attribute) => {
+	  element.setAttribute(attribute, attributes[attribute]);
+	});
+  
+	Object.keys(values).forEach((val) => {
+	  element[val] = values[val];
+	});
+  
+	return element;
+  }
+
+  async function loadPage() {
+	await window.hlx.plugins.load('eager', pluginContext);
+	await loadEager(document);
+	await window.hlx.plugins.load('lazy', pluginContext);
+	await loadLazy(document);
+	loadDelayed();
 }
 
 loadPage();
