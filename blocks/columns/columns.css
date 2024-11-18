@@ -370,7 +370,7 @@ main .section.columns-container .columns.offset h2 {
 
 .columns.offset > div:last-of-type > div:first-of-type h3,
 .columns.offset > div:last-of-type > div:first-of-type p {
-	text-align: left;
+	text-align: right;
 	width: fit-content;
 	margin: 0 30px 0 0;
 }
@@ -387,16 +387,23 @@ main .section.columns-container .columns.offset h2 {
 	margin: 18px 30px 18px 0;
 }
 
-@media(width <= 768px){
+@media(width <= 900px){
 	.columns > div:first-of-type,
 	.columns > div:last-of-type {
-		flex-direction: column-reverse
+		flex-direction: column-reverse;
+		align-items: center
+	}
+
+	.columns.offset > div:nth-of-type(2){
+		flex-direction: column;
+		align-items: center
 	}
 
 	main .section.columns-container .columns.offset h2 {
 		font-size: 3.75rem;
         line-height: 4rem;
 		margin: 0;
+		max-width: 480px;
 	}
 
 	.columns.offset > div .linked-image-wrapper h4 {
@@ -404,6 +411,14 @@ main .section.columns-container .columns.offset h2 {
 		line-height: 2.4375rem;
 		margin: 9px 25px;
 		font-weight: 600;
+	}
+
+	.columns.offset > div:last-of-type > div:first-of-type {
+		max-width: 480px;
+	}
+
+	.columns.offset > div:last-of-type > div:first-of-type p {
+		text-align: left;
 	}
 
 	.columns.offset > div:nth-of-type(2) > div:first-of-type picture img {
@@ -434,4 +449,6 @@ main .section.columns-container .columns.offset h2 {
 		left: 0;
 		top: -337px;
 	}
+
+
 }
