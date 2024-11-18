@@ -101,8 +101,6 @@ export default function decorate(block) {
 					zIndex = 6 - idx; // Default zIndex
 				}
 				
-				console.log("scroll down", scrollDown, zIndex);
-
 				el.style.opacity = opacity;
 				el.style.zIndex = zIndex;
 			};
@@ -117,14 +115,8 @@ export default function decorate(block) {
 					zIndex = Math.min(6 - idx, -1 + ((triggerPoint - textTopPos) / opacityMax)); // Scale zIndex back up
 					if (opacity > 1) opacity = 1; // Keep opacity within bounds
 					if (zIndex > 0) zIndex = 6 - idx; // Clamp zIndex to 0
-				// } else {
-				// 	opacity = 0; // No opacity if not yet at triggerPoint
-				// 	zIndex = -1; // Lowest zIndex
-				// }
 				}
 				
-				console.log("scroll up", scrollDown, zIndex);
-
 				el.style.opacity = opacity;
 				el.style.zIndex = zIndex;
 			}

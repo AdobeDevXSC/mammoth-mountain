@@ -223,7 +223,7 @@ window.onscroll = function () {
   navWrapper.append(nav);
   block.append(navWrapper);
 
-  if (getMetadata('breadcrumbs').toLowerCase() === 'true') {
-    navWrapper.append(await buildBreadcrumbs());
-  }
+//   if (getMetadata('breadcrumbs').toLowerCase() === 'true') {
+//     navWrapper.append(await buildBreadcrumbs());
+//   }
 }
