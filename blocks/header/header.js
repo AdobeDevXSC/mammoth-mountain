@@ -193,6 +193,17 @@ export default async function decorate(block) {
     });
   }
 
+// JS for Navbar hide/show on scroll
+var prevScrollpos = window.scrollY;
+window.onscroll = function () {
+    var currentScrollPos = Math.max(window.scrollY, 0);
+    if (currentScrollPos - prevScrollpos <= 75 ) {
+        document.getElementById("nav").style.backgroundColor = "transparent";
+    } else {
+        document.getElementById("nav").style.backgroundColor = "#000";
+    }
+};
+
   // hamburger for mobile
   const hamburger = document.createElement('div');
   hamburger.classList.add('nav-hamburger');
