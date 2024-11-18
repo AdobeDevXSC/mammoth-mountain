@@ -248,3 +248,57 @@
 	z-index: 2;
 	opacity: 1;
 }
+
+@media(width <= 768px){
+	.section > div.vertical-scroll-wrapper {
+		width: 515px;
+		height: 4654px;
+		padding: 0px 0px 3580px;
+	}
+	
+	.vertical-scroll > div:first-of-type {
+		margin-left: 0;
+		max-width: 515px;
+		width: 515px;
+		max-height: 1074px;
+		height: 1074px;
+	}
+
+	.section.vertical-scroll-container.unfix .vertical-scroll > div:first-of-type,
+	.section.vertical-scroll-container.fixed .vertical-scroll > div:first-of-type {
+		left: 0;
+		max-width: 100%;
+		width: 100%;
+		margin-left: 0;
+		max-width: 515px;
+		width: 515px;
+		max-height: 1074px;
+		height: 1074px;
+	}
+
+	.vertical-scroll .text-block-wrapper {
+		width: 225px;
+		height: 332px;
+		left: 0;
+	}
+
+	.vertical-scroll .text-block-wrapper > div {
+		width: 225px;
+		height: 332px;
+	}
+
+	.vertical-scroll .text-block-wrapper > div > h2 {
+		font-size: 2.75rem;
+        line-height: 2.55rem;
+	}
+
+	.vertical-scroll .text-block-wrapper > div > h3 {
+		font-size: 1.75rem;
+		line-height: 1.61rem;
+	}
+
+	.text-block-wrapper > div > p:not(:first-of-type) {
+		font-size: 0.875rem;
+		letter-spacing: 0.0493125rem;
+	}
+}
