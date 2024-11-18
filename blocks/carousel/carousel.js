@@ -166,7 +166,13 @@ export default async function decorate(block) {
       <button type="button" class="slide-next" aria-label="${placeholders.nextSlide || 'Next Slide'}"></button>
     `;
 
-    container.append(slideNavButtons);
+	// Custom code
+	const navigationTitleDiv = document.createElement('div');
+	navigationTitleDiv.classList.add('nav-title-container');
+	navigationTitleDiv.append(title);
+	navigationTitleDiv.append(slideNavButtons);
+	block.prepend(container);
+	block.prepend(navigationTitleDiv);
   }
 
   rows.forEach((row, idx) => {
@@ -182,13 +188,6 @@ export default async function decorate(block) {
     }
     row.remove();
   });
-
-  // Custom code
-  const navigationTitleDiv = document.createElement('div');
-  navigationTitleDiv.classList.add('nav-title-container');
-  navigationTitleDiv.append(title);
-  block.prepend(container);
-  block.prepend(navigationTitleDiv);
 
   if (!isSingleSlide) {
     bindEvents(block);
