@@ -193,16 +193,16 @@ export default async function decorate(block) {
     });
   }
 
-// JS for Navbar hide/show on scroll
-var prevScrollpos = window.scrollY;
-window.onscroll = function () {
-    var currentScrollPos = Math.max(window.scrollY, 0);
-    if (currentScrollPos - prevScrollpos <= 75 ) {
-        document.getElementById("nav").style.backgroundColor = "transparent";
-    } else {
-        document.getElementById("nav").style.backgroundColor = "#000";
-    }
-};
+  // JS for Navbar hide/show on scroll
+  var prevScrollpos = window.scrollY;
+  window.onscroll = function () {
+      var currentScrollPos = Math.max(window.scrollY, 0);
+      if (currentScrollPos - prevScrollpos <= 75 ) {
+          document.getElementById("nav").style.backgroundColor = "transparent";
+      } else {
+          document.getElementById("nav").style.backgroundColor = "#000";
+      }
+  };
 
   // hamburger for mobile
   const hamburger = document.createElement('div');
@@ -215,8 +215,8 @@ window.onscroll = function () {
   nav.setAttribute('aria-expanded', 'false');
   // prevent mobile nav behavior on window resize
   
-  toggleMenu(nav, navSections, isDesktop.matches);
-  isDesktop.addEventListener('change', () => toggleMenu(nav, navSections, isDesktop.matches));
+  // toggleMenu(nav, navSections, isDesktop.matches);
+  // isDesktop.addEventListener('change', () => toggleMenu(nav, navSections, isDesktop.matches));
 
   const navWrapper = document.createElement('div');
   navWrapper.className = 'nav-wrapper';

@@ -14,7 +14,7 @@ header .nav-wrapper {
   }
   
   header nav#nav[aria-expanded="true"] {
-	  background-color: var(--mammoth-blue);
+	  background-color: var(--mammoth-blue) !important;
 	  overflow-y: auto;
 	  min-height: 100vh;
   }
@@ -262,7 +262,7 @@ header .nav-wrapper {
 	visibility: visible;
 	position: relative;
 	height: calc(100% - var(--nav-height));
-  }
+	}
 
   header nav#nav[aria-expanded="true"] .nav-sections::after {
 	content: '';
