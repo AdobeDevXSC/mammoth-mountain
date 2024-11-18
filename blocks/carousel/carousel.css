@@ -5,6 +5,7 @@
 .section.cards-carousel .carousel-wrapper {
 	max-width: 100%;
 	position: relative;
+	border: dashed orange 2px;
 }
 
 .section.cards-carousel.carousel-container .carousel {
@@ -12,6 +13,7 @@
 	padding-left: 8%;
 	align-items: center;
 	position: relative;
+	border: solid 2px lime;
 }
 
 .carousel .carousel-slides,
@@ -26,7 +28,11 @@
   gap: 37px;
   overflow: hidden;
   scroll-snap-type: x mandatory;
-  border: solid 2px purple;
+  padding-right: 37px;
+}
+
+.carousel .carousel-slides-container {
+	overflow: hidden;
 }
 
 .carousel .carousel-slides::-webkit-scrollbar {
@@ -34,7 +40,7 @@
 }
 
 .carousel .carousel-slide {
-  flex: 0 0 37.33%;
+  flex: 0 0 438px;
   scroll-snap-align: start;
   visibility: visible;
   width: 100%;
@@ -71,6 +77,7 @@
 	display: flex;
 	align-items: center;
 	gap: 8px;
+	
 }
 
 /* stylelint-disable-next-line no-descending-specificity */
@@ -112,9 +119,13 @@
 }
 
 .carousel .nav-title-container h2 {
-	font-size: 40px;
-	font-weight: 400;
-	margin: 0 0 2rem 0;
+    font-weight: 600;
+    font-size: 2.5rem;
+    line-height: 2.4375rem;
+    letter-spacing: normal;
+    color: #000000;
+    margin-bottom: 48px;
+	margin: 0 0 48px 0;
 }
 
 .carousel .carousel-slides li:hover .carousel-slide-content {
@@ -188,13 +199,14 @@
 
 @media (width <= 1200px) {
 	.carousel .carousel-slide .carousel-slide-image {
-		max-height: 640px;
+		/* max-height: 640px; */
+		border: dashed yellow 2px;
 	}
 }
 
 @media (width <= 992px) {
 	.section.cards-carousel.carousel-container .carousel {
-		padding-left: 32px; 
+		padding-left: 32px;
 	}
 
 	.carousel .nav-title-container {
@@ -207,7 +219,6 @@
 
 	.carousel .carousel-slides-container {
 		margin-top: 2rem;
-		overflow: hidden;
 	}
 
 	.carousel .carousel-slides {
@@ -229,6 +240,8 @@
 	}
 }
 
+
+
 @media (width <= 768px) {
 	.section.cards-carousel.carousel-container {
 		padding: 0 0 102px;
@@ -241,7 +254,6 @@
 
 	.carousel .nav-title-container h2 {
 		max-width: unset;
-		margin-bottom: 48px;
 	}
 
 	.carousel .carousel-slides {
@@ -249,7 +261,7 @@
 	}
 
 	.carousel .carousel-slide {
-		flex: 0 0 80%;
+		flex: 0 0 85%;
 	}
 
 	.carousel .carousel-slides li .carousel-slide-content {
@@ -259,7 +271,6 @@
 	.carousel .carousel-slides li:hover .carousel-slide-content {
 		background-color: transparent;
 		color: var(--mammoth-blue);
-
 	}
 
 	.carousel .carousel-slides li:hover .carousel-slide-content .arrow::after {

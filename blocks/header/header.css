@@ -11,14 +11,12 @@ header .nav-wrapper {
 	height: var(--nav-height);
 	padding: 0 0 0 90px; 
 	font-family: var(--body-font-family);
-	transition: 0.5s;
   }
   
   header nav#nav[aria-expanded="true"] {
-	  background-color: var(--mammoth-blue) !important;
+	  background-color: var(--mammoth-blue);
 	  overflow-y: auto;
 	  min-height: 100vh;
-	  transition: 0.1s;
   }
   
   header nav#nav p {
@@ -249,9 +247,6 @@ header .nav-wrapper {
 	line-height: 34px;
   }
 
-  header .nav-brand > div > p:last-of-type:hover {
-	cursor: pointer;
-  }
 
 
 
@@ -318,6 +313,7 @@ header nav#nav[aria-expanded="true"] .nav-sections > div > h4 {
 
   header nav#nav[aria-expanded="true"] .nav-sections > div > ul > li > a {
 	font-family: var(--subheading-font-family);
+	/* font-weight: 700; */
 	font-size: 1rem;
     line-height: 1rem;
     letter-spacing: 0.75px;
