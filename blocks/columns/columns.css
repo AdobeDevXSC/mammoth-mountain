@@ -201,6 +201,9 @@ main .section.with-video.columns-container .columns-wrapper {
 
 
 
+
+
+
 /* offset columns */
 /* dark background block and section heading */
 .offset.section.columns-container {
@@ -382,4 +385,53 @@ main .section.columns-container .columns.offset h2 {
 	letter-spacing: 0.0493125rem;
 	text-transform: capitalize;
 	margin: 18px 30px 18px 0;
+}
+
+@media(width <= 768px){
+	.columns > div:first-of-type,
+	.columns > div:last-of-type {
+		flex-direction: column-reverse
+	}
+
+	main .section.columns-container .columns.offset h2 {
+		font-size: 3.75rem;
+        line-height: 4rem;
+		margin: 0;
+	}
+
+	.columns.offset > div .linked-image-wrapper h4 {
+		font-size: 1.5rem;
+		line-height: 2.4375rem;
+		margin: 9px 25px;
+		font-weight: 600;
+	}
+
+	.columns.offset > div:nth-of-type(2) > div:first-of-type picture img {
+		width: 480px;
+		aspect-ratio: 16 / 9;
+		object-fit: cover;
+		max-height: 432px;
+		display: block;
+	}
+
+	.columns.offset > div:nth-of-type(2) > div:last-of-type {
+		margin-top: 0;
+	}
+
+	.columns.offset > div:last-of-type > div:last-of-type {
+		margin-top: 0;
+	}
+
+	/* last block of columns */
+	.columns.offset > div:last-of-type > div:first-of-type {
+		align-items: flex-start;
+	}
+
+	/* crown logo */
+	.columns.offset > div:first-of-type > div:first-of-type::after {
+		width: 118px;
+		height: 118px;
+		left: 0;
+		top: -337px;
+	}
 }
