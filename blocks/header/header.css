@@ -249,6 +249,9 @@ header .nav-wrapper {
 	line-height: 34px;
   }
 
+  header .nav-brand > div > p:last-of-type:hover {
+	cursor: pointer;
+  }
 
 
 
@@ -315,7 +318,6 @@ header nav#nav[aria-expanded="true"] .nav-sections > div > h4 {
 
   header nav#nav[aria-expanded="true"] .nav-sections > div > ul > li > a {
 	font-family: var(--subheading-font-family);
-	/* font-weight: 700; */
 	font-size: 1rem;
     line-height: 1rem;
     letter-spacing: 0.75px;

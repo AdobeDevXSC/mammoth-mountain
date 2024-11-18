@@ -4,7 +4,7 @@
 
 .section.cards-carousel .carousel-wrapper {
 	max-width: 100%;
-
+	position: relative;
 }
 
 .section.cards-carousel.carousel-container .carousel {
@@ -24,9 +24,9 @@
 .carousel .carousel-slides {
   display: flex;
   gap: 37px;
-  overflow-x: hidden;
-  overflow-y: auto;
+  overflow: hidden;
   scroll-snap-type: x mandatory;
+  border: solid 2px purple;
 }
 
 .carousel .carousel-slides::-webkit-scrollbar {
@@ -38,14 +38,7 @@
   scroll-snap-align: start;
   visibility: visible;
   width: 100%;
-}
-
-.carousel .carousel-slide:has(.carousel-slide-content[data-align="center"]) {
-  align-items: center;
-}
-
-.carousel .carousel-slide:has(.carousel-slide-content[data-align="right"]) {
-  align-items: flex-end;
+  border: solid 2px orange;
 }
 
 .carousel .carousel-slide .carousel-slide-image {
@@ -67,6 +60,7 @@
   background-color: var(--light-color);
   position: relative;
   width: var(--slide-content-width, auto);
+  border: solid 2px lime;
 }
 
 .carousel .carousel-slide-indicators {
@@ -186,6 +180,12 @@
 	text-decoration: none;
 }
 
+
+
+
+
+
+
 @media (width <= 1200px) {
 	.carousel .carousel-slide .carousel-slide-image {
 		max-height: 640px;
@@ -231,29 +231,17 @@
 
 @media (width <= 768px) {
 	.section.cards-carousel.carousel-container {
-		padding: 98px 0 148px;
-		margin-top: 48px;
+		padding: 0 0 102px;
 	}
 
 	.section.cards-carousel.carousel-container .carousel {
 		display: block;
 		padding-left: 20px;
-		position: relative;
 	}
 
 	.carousel .nav-title-container h2 {
 		max-width: unset;
-	}
-
-	.carousel .nav-title-container .wrapper-div {
-		display: flex;
-		flex-direction: column;
-		justify-content: space-between;
-		min-height: 932px;
-		min-width: 400px;
-		position: absolute;
-		top: -98px;
-		left: 20px;
+		margin-bottom: 48px;
 	}
 
 	.carousel .carousel-slides {

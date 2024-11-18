@@ -186,14 +186,7 @@ export default async function decorate(block) {
   // Custom code
   const navigationTitleDiv = document.createElement('div');
   navigationTitleDiv.classList.add('nav-title-container');
-  const wrapperDiv = document.createElement('div');
-  wrapperDiv.classList.add('wrapper-div');
-  const slideNavButtonsDiv = container.querySelector('.carousel-navigation-buttons');
-
-  wrapperDiv.append(title);
-  wrapperDiv.append(slideNavButtonsDiv);
-  navigationTitleDiv.append(wrapperDiv);
-
+  navigationTitleDiv.append(title);
   block.prepend(container);
   block.prepend(navigationTitleDiv);
 
