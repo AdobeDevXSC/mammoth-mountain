@@ -152,6 +152,7 @@ main .section.with-video.columns-container .columns-wrapper {
 		margin: 55px 0 60px;
 	}
 
+
 	.video-wrapper {
 		width: 100%;
 		max-height: 750px;
@@ -422,17 +423,25 @@ main .section.columns-container .columns.offset h2 {
 		font-size: 2.375rem;
         line-height: 2.125rem;
 	}
-
-	.columns.offset > div picture img {
-		
-	}
 }
 
 @media(width <= 767px){
+	.offset.section.columns-container {
+		position: relative;
+		padding-top: 237px;
+		padding-left: 16px;
+		padding-right: 16px;
+	}
+
 	.columns > div:first-of-type,
 	.columns > div:last-of-type {
 		flex-direction: column-reverse;
 		align-items: center
+	}
+
+	.offset.section.columns-container::before {
+		height: 584px;
+		top: 0;
 	}
 
 	.columns.offset > div:nth-of-type(2){
@@ -444,7 +453,11 @@ main .section.columns-container .columns.offset h2 {
 		font-size: 3.75rem;
         line-height: 4rem;
 		margin: 0;
-		max-width: 480px;
+		max-width: unset;
+	}
+
+	.columns.offset > div .linked-image-wrapper {
+		width: 100%;
 	}
 
 	.columns.offset > div .linked-image-wrapper h4 {
@@ -455,23 +468,26 @@ main .section.columns-container .columns.offset h2 {
 	}
 
 	.columns.offset > div:last-of-type > div:first-of-type {
-		max-width: 480px;
+		width: 100%;
+		margin-top: 24px;
 	}
 
 	.columns.offset > div:last-of-type > div:first-of-type p {
 		text-align: left;
 	}
 
+	.columns.offset > div:nth-of-type(2) > div:first-of-type {
+		width: 100%;
+	}
+
 	.columns.offset > div:nth-of-type(2) > div:first-of-type picture img {
-		width: 480px;
-		aspect-ratio: 16 / 9;
-		object-fit: cover;
-		max-height: 432px;
+		width: 100%;
 		display: block;
 	}
 
 	.columns.offset > div:nth-of-type(2) > div:last-of-type {
 		margin-top: 0;
+		width: 100%;
 	}
 
 	.columns.offset > div:last-of-type > div:last-of-type {
@@ -490,6 +506,20 @@ main .section.columns-container .columns.offset h2 {
 		left: 0;
 		top: -337px;
 	}
+}
 
 
+@media(width <= 600px){
+	main .section.columns-container .columns.offset h2,
+	.columns.offset > div:last-of-type > div:first-of-type {
+		max-width: 480px;
+	}
+
+	.columns.offset > div:nth-of-type(2) > div:first-of-type picture img {
+		width: 480px;
+		aspect-ratio: 16 / 9;
+		object-fit: cover;
+		max-height: 432px;
+		display: block;
+	}
 }
