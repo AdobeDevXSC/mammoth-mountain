@@ -167,7 +167,7 @@ main .section.cards-container {
     aspect-ratio: 2.185;
     width: 100%;
 	height: 100%;
-	padding: 67px 0 165px;;
+	padding: 67px 0 165px;
   }
 
   /* fun sticker */
@@ -177,6 +177,7 @@ main .section.cards-container {
 	height: 202px;
 	background: url(https://main--mammoth-mountain--adobedevxsc.hlx.live/images/orangefunsticker.png);
 	background-repeat: no-repeat;
+	background-size: cover;
 	display: inline-block;
 	position: absolute;
     right: 71px;
@@ -190,8 +191,8 @@ main .section.cards-container {
     z-index: 1;
 	object-fit: cover;
 	display: block;
-	height: 520px;
-	min-height: 520px;
+	height: 580px;
+	min-height: 580px;
   }
 
   .cards.editorial > ul > li {
@@ -204,11 +205,11 @@ main .section.cards-container {
 	z-index: 1;
 	border: none;
 	/* position: absolute; */
-	max-height: 520px;
+	max-height: 580px;
   }
 
   .cards.editorial > ul > li > .cards-card-image {
-	max-height: 520px;
+	max-height: 580px;
   }
 
   .cards.editorial ul li:first-of-type {
@@ -228,7 +229,6 @@ main .section.cards-container {
 	.cards.editorial ul li {
 		position: absolute;
 		width: 25%;
-		height: unset;
   	}
   }
 
@@ -246,10 +246,73 @@ main .section.cards-container {
 	}
 }
 
+@media (width <= 1024px) {
+	.cards.editorial > ul {
+		bottom: 120px;
+	}
+
+	.editorial.cards > ul > li img,
+	.editorial.cards > ul > li video {
+		max-height: 400px;
+		min-height: 400px;
+	}
+
+	.cards.editorial ul li:first-of-type {
+		left: 7.64%;
+	}
+
+	.cards.editorial ul li:nth-of-type(2) {
+		left: 38.19%;
+	}
+
+	.cards.editorial ul li:last-of-type {
+		left: 68.74%;
+	}
+}
+
+
 @media (width <= 767px) {
-	/* .cards.editorial ul {
+	.section.editorial {
+		padding: 55px 0 0;
+		overflow: hidden;
+	}
+
+	.cards.editorial {
+		min-height: 695px;
+		margin-top: 55px;
+	}
+
+	.cards.editorial ul {
+		padding: 0;
+		top: -55px;
+		min-height: 695px;
+	}
+
+	.cards.editorial ul li:first-of-type {
+		width: 388px;
+		height: 695px;
+	}
+
+	.cards.editorial .cards-card-image {
+		width: 388px;
+		min-height: 695px;
+	}
+
+	.editorial.cards > ul > li img {
+		width: 388px;
+		min-height: 695px;
+	}
+
+	.cards.editorial ul li:not(:first-of-type) {
 		display: none;
-	} */
+	}
+
+	.cards.editorial::after { 
+		width: 177px;
+		height: 177px;
+		right: -59px;
+		top: 89px;
+	}
 }
   
 /* black mammoth logo tag in middle image */

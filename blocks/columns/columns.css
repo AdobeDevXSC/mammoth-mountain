@@ -258,7 +258,7 @@ main .section.columns-container .columns.offset h2 {
 	gap: 48px;
 	margin-bottom: 48px;
 	position: relative;
-	z-index: 100;
+	z-index: 50;
 }
 
 .columns.offset > div:last-of-type {
@@ -387,7 +387,7 @@ main .section.columns-container .columns.offset h2 {
 	margin: 18px 30px 18px 0;
 }
 
-@media(width <= 900px){
+@media(width <= 767px){
 	.columns > div:first-of-type,
 	.columns > div:last-of-type {
 		flex-direction: column-reverse;
