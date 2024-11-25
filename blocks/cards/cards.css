@@ -191,8 +191,8 @@ main .section.cards-container {
     z-index: 1;
 	object-fit: cover;
 	display: block;
-	height: 580px;
-	min-height: 580px;
+	height: 620px;
+	min-height: 620px;
   }
 
   .cards.editorial > ul > li {
@@ -205,11 +205,11 @@ main .section.cards-container {
 	z-index: 1;
 	border: none;
 	/* position: absolute; */
-	max-height: 580px;
+	max-height: 620px;
   }
 
   .cards.editorial > ul > li > .cards-card-image {
-	max-height: 580px;
+	max-height: 620px;
   }
 
   .cards.editorial ul li:first-of-type {
@@ -225,14 +225,14 @@ main .section.cards-container {
 	bottom: 0;
   }
 
-  @media (width > 768px) {
+@media (width > 768px) {
 	.cards.editorial ul li {
 		position: absolute;
 		width: 25%;
   	}
-  }
+}
 
-  @media (width > 1024px) {
+@media (width > 1040px) {
 	.cards.editorial ul li:first-of-type {
 		left: 7.64%;
 	}
@@ -246,11 +246,20 @@ main .section.cards-container {
 	}
 }
 
-@media (width <= 1024px) {
+@media (width <= 1375px) {
 	.cards.editorial > ul {
-		bottom: 120px;
+		bottom: -80px;
+		padding: 67px 0 80px;
 	}
 
+	.editorial.cards > ul > li img,
+	.editorial.cards > ul > li video {
+		max-height: 475px;
+		min-height: 475px;
+	}
+}
+
+@media (width <= 1040px) {
 	.editorial.cards > ul > li img,
 	.editorial.cards > ul > li video {
 		max-height: 400px;
@@ -267,6 +276,13 @@ main .section.cards-container {
 
 	.cards.editorial ul li:last-of-type {
 		left: 68.74%;
+	}
+
+	.cards.editorial::after { 
+		width: 120px;
+		height: 120px;
+        right: 32px;
+        top: 16px;
 	}
 }
 
