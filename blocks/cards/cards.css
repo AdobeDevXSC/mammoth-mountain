@@ -368,7 +368,7 @@ main .section.cards-container {
 	}
 
 	.section.calendar.cards-container .default-content-wrapper p {
-		grid-column: 5/ span 4;
+		grid-column: 4/ span 4;
 		display: flex;
 		align-items: center;
 		margin: 64px 0 0 0;
@@ -421,10 +421,19 @@ main .section.cards-container {
 	padding-top: 216px; 
 	grid-column: 5/ span 4;
 	padding-right: 20px;
+	grid-template-columns: repeat(2, minmax(278px, 1fr));
+	grid-gap: 42px;
+  }
+
+  @media(width > 1550px){
+	.cards.calendar ul {
+		grid-column: 4/ span 4;
+	}
   }
 
   .cards.calendar > ul > li {
 	border: none;
+    max-width: 350px;
   }
 
   .cards.calendar > ul > li > a {
